@@ -8,6 +8,9 @@ import enter from '../images/home-menu-enter-logo.svg';
 import gear from '../images/gear.svg';
 import accset from '../images/accset.svg';
 import add from '../images/add.svg';
+import amin from '../images/amin.png';
+import ali from '../images/ali.png';
+import sadra from '../images/sadra.png';
 
 import './Screen-styles/Home.css';
 import { useEffect } from 'react';
@@ -136,17 +139,41 @@ export default function Home() {
                     <p className="online-en">ONLINE USERS</p>
                     <div className="scroll2">
 
-                        <div>yrtreyy</div>
+                        <div>
+                            <img src={amin} alt="amin" />
+                            <p>امین درون پرور</p>
+                            <p>@dxport</p>
+                        </div>
                         
-                        <div>yryrttr</div>
+                        <div>
+                            <img src={ali} alt="ali" />
+                            <p>علی نعیمی</p>
+                            <p>@naemiorg</p>
+                        </div>
                         
-                        <div>ytrtryyef</div>
+                        <div>
+                            <img src={sadra} alt="sadra" />
+                            <p>صدرا شعبان نژاد</p>
+                            <p>@SH14</p>
+                        </div>
                         
-                        <div>esdlksnflk/j</div>
+                        <div>
+                            <img src={ali} alt="ali" />
+                            <p>علی نعیمی</p>
+                            <p>@naemiorg</p>
+                        </div>
                         
-                        <div>esdlksnflk/j</div>
+                        <div>
+                            <img src={sadra} alt="sadra" />
+                            <p>صدرا شعبان نژاد</p>
+                            <p>@SH14</p>
+                        </div>
                         
-                        <div>esdlksnflk/j</div>
+                        <div>
+                            <img src={amin} alt="amin" />
+                            <p>امین درون پرور</p>
+                            <p>@dxport</p>
+                        </div>
 
                     </div>
                 </div>

@@ -65,7 +65,7 @@ export default function Login() {
                 <div className="welcome-texts">
                     <h1 className="twc">TOGETHER WE CAN</h1>
                     <p className="togetxt">به چت سازمانی گروه اسما خوش آمدید,وارد حساب کاربری خود شوید.</p>
-                    <p className="togetxt">نام کاربری و پسورد خود را از لیدر گروه خودتان بگیرید.</p>
+                    <p className="togetxt">همکار گرامی, نام کاربری و پسورد خود را از لیدر گروه خودتان بگیرید.</p>
                 </div>
 
                 <div className="form-keeper">
