@@ -1,0 +1,238 @@
+@font-face {
+    font-family: "Kinetika-Bold";
+    src: url("../../Fonts/Kinetika-Bold.ttf"), format("true type font");
+}
+@font-face {
+    font-family: "Peyda-Bold";
+    src: url("../../Fonts/Peyda-Bold.ttf"), format("true type font");
+}
+@font-face {
+    font-family: "Peyda-Medium";
+    src: url("../../Fonts/Peyda-Medium.ttf"), format("true type font");
+}
+
+
+.container2 {
+    width: 100%;
+    height: 100vh;
+    background-color: #020022;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    overflow: hidden;
+}
+.content2 {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8vw;
+}
+.content2 .asma-logo2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content2 .asma-logo2 img {
+    width: 70%;
+    margin-bottom: 1vw;
+}
+.welcome-texts2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3vw;
+}
+.twc2 {
+    font-family: "Kinetika-Bold";
+    font-size: 2.7vw;
+    word-spacing: 0.4vw;
+    letter-spacing: 0.7vw;
+    color: #FFF;
+    margin-bottom: 0.6vw;
+}
+.togetxt2 {
+    font-family: "Peyda-Medium";
+    direction: rtl;
+    text-align: center;
+    color: #D9D9D9;
+    opacity: 37%;
+    font-size: 1.3vw;
+    margin-bottom: 2vw;
+}
+
+
+.pages {
+    width: 85%;
+    max-height: 350px;
+}
+.pages .scroll {
+    width: auto;
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(1fr, 1fr);
+    gap: 1.7vw;
+    scroll-behavior: smooth;
+}
+.pages .scroll div {
+    height: 9vw;
+    border-radius: 20px;
+    border: solid 3px #d9d9d95e;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: center;
+    padding: 25px 0;
+}
+.pages .scroll div img {
+    margin: 0 auto;
+    width: 2.8vw;
+    margin-bottom: 0.5vw;
+}
+.pages .scroll div h3 {
+    color: #FFF;
+    font-size: 0.85vw;
+    margin-bottom: 8px;
+}
+.pages .scroll div p {
+    font-size: 0.45vw;
+    color: #d9d9d950;
+    word-spacing: 5px;
+    letter-spacing: 3px;
+    margin-bottom: 0.8vw;
+}
+.pages .scroll div button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.pages .scroll div button img {
+   width: 1.1vw;
+   margin: 0;
+   padding: 0;
+}
+
+.btn2 {
+    font-family: "Peyda-Bold";
+    padding: 8px 35px 8px 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d9d9d949;
+    color: #FFF;
+    font-size: 0.7vw;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
+}
+.btn2 span {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    animation: ripple 1s;
+    opacity: 0;
+}
+@keyframes ripple {
+    from {
+        opacity: 1;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(10);
+    }
+}
+
+.home-setting {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    margin-top: 2vw;
+    margin-bottom: 2.5vw;
+}
+.btn3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Peyda-Bold";
+    padding: 1px 5px;
+    border: solid 3px #d9d9d95e;
+    border-radius: 15px;
+    background-color: transparent;
+    color: #FFF;
+    font-size: 0.7vw;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
+}
+.btn3 span {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    animation: ripple 1s;
+    opacity: 0;
+}
+@keyframes ripple {
+    from {
+        opacity: 1;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(10);
+    }
+}
+
+.online-users {
+    width: 85%;
+    height: 27%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border: solid 3px #d9d9d95e;
+    padding: 20px 60px;
+    text-align: center;
+}
+.online-per {
+    font-family: "Peyda-Bold";
+    color: #FFF;
+    font-size: 0.8vw;
+    margin-bottom: 3px;
+}
+.online-en {
+    font-family: "Peyda-Medium";
+    color: #d9d9d950;
+    font-size: 0.4vw;
+    word-spacing: 4px;
+    letter-spacing: 4px;
+    margin-bottom: 17px;
+}
+.online-users .scroll2 {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2vw;
+    overflow-x: auto;
+}
+.online-users .scroll2 div{
+    border: solid 3px #d9d9d950;
+}
