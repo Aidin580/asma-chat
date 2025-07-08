@@ -23,7 +23,7 @@
   backdrop-filter: blur(12px);
   padding: 15px 30px;
   border-radius: 20px;
-  min-width: 550px;
+  min-width: 450px;
   min-height: 400px;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
   transform: scale(0.8);
@@ -67,7 +67,7 @@
 
 .inputs form {
   display: grid;
-  grid-template-rows: 25% 65%;
+  grid-template-rows: 25% 60%;
 }
 .inputs form .first-input {
   display: flex;
@@ -98,45 +98,24 @@
   height: 100%;
 }
 
-.image-picker {
-  width: 300px;
-  height: 200px;
-  border: 2px dashed #aaa;
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  text-align: center;
+.img-picker {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.image-picker span {
-  font-size: 16px;
-  color: #666;
-  z-index: 1;
-}
-.image-picker img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: none;
-}
-.image-picker input[type="file"] {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-}
 .the-picker {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #d9d9d9;
+  background-color: #d9d9d977;
+  border-radius: 8px;
+}
+.the-picker img {
+  width: 1vw;
+  background: #d9d9d991;
+  padding: 8px;
+  border-radius: 5px;
 }

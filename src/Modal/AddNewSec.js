@@ -34,7 +34,6 @@ export default function AddNewSec({ onClose }) {
       fileInput.addEventListener('change', handleFileChange);
     }
 
-    // پاک‌سازی برای جلوگیری از حافظه‌ی اضافی
     return () => {
       if (fileInput) {
         fileInput.removeEventListener('change', handleFileChange);
@@ -74,7 +73,7 @@ export default function AddNewSec({ onClose }) {
                   <p>افزودن عکس</p>
                   <p>فرمت توصیه شده: SVG</p>
                   <p>رنگ توصیه شده: سفید</p>
-                  <img src={pin} alt='pin-image' width="3vw" />
+                  <img src={pin} alt='pin-image' />
                   <input type="file" accept="image/*" hidden />
                 </label>
               </div>
