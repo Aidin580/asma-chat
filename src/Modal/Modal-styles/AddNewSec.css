@@ -1,0 +1,142 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.fade-in {
+  opacity: 1;
+}
+.fade-out {
+  opacity: 0;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.267);
+  backdrop-filter: blur(12px);
+  padding: 15px 30px;
+  border-radius: 20px;
+  min-width: 550px;
+  min-height: 400px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  transform: scale(0.8);
+  transition: transform 0.3s ease-in-out;
+  display: grid;
+  flex-direction: column;
+  grid-template-rows: 10% 10% 80%;
+}
+.scale-in {
+  transform: scale(1);
+}
+.scale-out {
+  transform: scale(0.8);
+}
+
+.close-icon {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.txt {
+    direction: rtl;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+.txt h4 {
+  display: flex;
+  column-gap: 3px;
+  color: #FFF;
+}
+.txt p {
+  display: flex;
+  align-items: center;
+  font-family: "Peyda-Medium";
+  color: #d9d9d94d;
+  font-size: 0.7vw;
+  padding-top: 8px;
+}
+
+.inputs form {
+  display: grid;
+  grid-template-rows: 25% 65%;
+}
+.inputs form .first-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inputs form .first-input input {
+  width: 100%;
+  height: 80%;
+  border: none;
+  outline: none;
+  direction: rtl;
+  font-size: 1vw;
+  padding: 0 20px;
+  border-radius: 8px;
+  background: #d9d9d977;
+  color: #FFF;
+}
+.rest-of-form {
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: 35% 65%;
+}
+.img-picker {
+  height: 100%;
+}
+.rest-of-fort2 {
+  height: 100%;
+}
+
+.image-picker {
+  width: 300px;
+  height: 200px;
+  border: 2px dashed #aaa;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-picker span {
+  font-size: 16px;
+  color: #666;
+  z-index: 1;
+}
+.image-picker img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+.image-picker input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}
+.the-picker {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #d9d9d9;
+}

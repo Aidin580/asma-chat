@@ -13,7 +13,9 @@ import ali from '../images/ali.png';
 import sadra from '../images/sadra.png';
 
 import './Screen-styles/Home.css';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import AddNewSec from '../Modal/AddNewSec';
+
 
 export default function Home() {
 
@@ -76,6 +78,9 @@ export default function Home() {
         };
     }, []);
 
+    const [showChatSettings, setShowChatSettings] = useState(false);
+
+
     return (
         <div className="container2">
             <div className="content2">
@@ -129,9 +134,15 @@ export default function Home() {
                 <div className="home-setting">
                     <button className="btn3">تنظیمات چت&nbsp;&nbsp;&nbsp;&nbsp;<img src={gear} style={{ width: "0.9vw" }} alt="chat setting" /></button>
 
+
                     <button className="btn3">تنظیمات شخصی&nbsp;&nbsp;&nbsp;<img src={accset} style={{ width: "1vw" }} alt="account setting" /></button>
 
-                    <button className="btn3">ساخت بخش جدید&nbsp;&nbsp;&nbsp;<img src={add} style={{ width: "1vw" }} alt="add a new section" /></button>
+                    <button
+                        className="btn3"
+                        onClick={() => setShowChatSettings(true)}
+                    >
+                        ساخت بخش جدید&nbsp;&nbsp;&nbsp;<img src={add} style={{ width: "1vw" }} alt="add a new section" />
+                    </button>
                 </div>
 
                 <div className="online-users">
@@ -177,6 +188,13 @@ export default function Home() {
 
                     </div>
                 </div>
+
+                {
+                    showChatSettings && (
+                        <AddNewSec onClose={() => setShowChatSettings(false)}  />
+                    )
+                }
+
             </div>
         </div>
     )

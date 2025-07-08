@@ -84,6 +84,7 @@ export default function Login() {
                                 value={formik.values.email}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
+                                spellCheck={false}
                             />
                             {
                                 formik.touched.email && formik.errors.email ? (<p style={{color: "red"}}>{formik.errors.email}</p>) : null
@@ -100,6 +101,7 @@ export default function Login() {
                                 value={formik.values.password}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
+                                spellCheck={false}
                             />
                             {
                                 formik.touched.password && formik.errors.password ? (<p style={{color: "red"}}>{formik.errors.password}</p>) : null
