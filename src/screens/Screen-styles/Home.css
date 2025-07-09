@@ -35,7 +35,7 @@
     align-items: center;
 }
 .content2 .asma-logo2 img {
-    width: 70%;
+    width: 80%;
     margin-bottom: 1vw;
 }
 .welcome-texts2 {
@@ -75,12 +75,12 @@
     overflow-x: auto;
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(1fr, 1fr);
+    grid-auto-columns: minmax(170px, 1fr);
     gap: 1.7vw;
     scroll-behavior: smooth;
 }
 .pages .scroll div {
-    height: 9vw;
+    height: 12vw;
     border-radius: 20px;
     border: solid 3px #d9d9d95e;
     display: flex;
@@ -160,7 +160,7 @@
     flex-direction: row;
     gap: 1vw;
     margin-top: 2vw;
-    margin-bottom: 2.5vw;
+    margin-bottom: 2.7vw;
 }
 .btn3 {
     display: flex;
@@ -204,11 +204,13 @@
 
 .online-users {
     width: 85%;
-    height: 27%;
+    height: 31%;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    border: solid 3px #d9d9d95e;
-    padding: 20px 60px;
+    border-left: solid 3px #d9d9d95e;
+    border-right: solid 3px #d9d9d95e;
+    border-top: solid 3px #d9d9d95e;
+    padding: 20px 40px;
     text-align: center;
 }
 .online-per {
@@ -228,11 +230,11 @@
 .online-users .scroll2 {
     width: 100%;
     height: 100%;
-    max-height: 500px;
+    max-height: 200px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 1.7vw;
-    column-gap: 2.9vw;
+    row-gap: 1.5vw;
+    column-gap: 1.5vw;
     overflow-y: auto;
     justify-content: start;
     align-content: start;
@@ -247,7 +249,7 @@
     justify-content: end;
 }
 .online-users .scroll2 div img {
-    width: 2.3vw;
+    width: 1.8vw;
     border-radius: 10px;
     margin: 5px;
 }
@@ -257,8 +259,8 @@
     background-color: #d9d9d950;
     color: #FFF;
     width: 130px;
-    height: 45px;
-    line-height: 45px;
+    height: 35px;
+    line-height: 35px;
     margin: 5px;
     border-radius: 10px;
 }
@@ -268,8 +270,8 @@
     background-color: #d9d9d950;
     color: #FFF;
     width: 130px;
-    height: 45px;
-    line-height: 45px;
+    height: 35px;
+    line-height: 35px;
     margin: 5px;
     border-radius: 10px;
 }
