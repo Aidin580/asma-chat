@@ -23,14 +23,13 @@ export default function Login() {
         }),
         onSubmit: (values) => {
             console.log(values);
-            if (values.email === "test@test.com" && values.password === "1234") {
-                Navigate("./home");
-            } else {
-                alert("اطلاعات نامعتبر است");
-            }
-        }
-    })
-
+                    if (values.email === "test@test.com" && values.password === "1234") {
+                        Navigate("./home");
+                    } else {
+                        alert("اطلاعات نامعتبر است");
+                    }
+                }
+            })
     useEffect(() => {
         const btn = document.querySelector(".btn");
         if (!btn) return;
@@ -69,7 +68,15 @@ export default function Login() {
                 </div>
 
                 <div className="form-keeper">
-                    <form onSubmit={formik.handleSubmit}>
+                    <form
+                        onSubmit={formik.handleSubmit}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                            e.preventDefault();
+                            formik.handleSubmit();
+                            }
+                        }}
+                    >
 
                         <div className="txt-inputs">
 

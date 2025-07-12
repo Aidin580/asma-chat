@@ -89,7 +89,36 @@ export default function AddNewSec({ onClose }) {
                 btn.removeEventListener("click", handleClick);
             });
         };
-    }, []);
+  }, []);
+  useEffect(() => {
+      const handleClick = function (e) {
+          const ripple = document.createElement("span");
+          ripple.classList.add("ripple");
+          const rect = this.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          ripple.style.left = `${x}px`;
+          ripple.style.top = `${y}px`;
+
+          this.appendChild(ripple);
+
+          setTimeout(() => {
+              ripple.remove();
+          }, 600);
+      };
+
+      const buttons = document.querySelectorAll(".btn5");
+      buttons.forEach(btn => {
+          btn.addEventListener("click", handleClick);
+      });
+
+      return () => {
+          buttons.forEach(btn => {
+              btn.removeEventListener("click", handleClick);
+          });
+      };
+  }, []);
 
   return (
     <div className={`modal-overlay ${visible ? 'fade-in' : 'fade-out'}`} onClick={handleClose}>
@@ -183,6 +212,9 @@ export default function AddNewSec({ onClose }) {
                 </div>
               </div>
             </div>
+                <div className="submit-btn">
+                  <button className="btn5">افزودن بخش جدید<img className="add2" src={add} alt="add a new section" /></button>
+                </div>
           </form>
         </div>
 

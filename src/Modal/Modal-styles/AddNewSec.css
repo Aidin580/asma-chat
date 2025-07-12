@@ -73,7 +73,7 @@
 
 .inputs form {
   display: grid;
-  grid-template-rows: 27% 60%;
+  grid-template-rows: 25% 58% 17%;
 }
 .inputs form .first-input {
   display: flex;
@@ -88,7 +88,7 @@
   direction: rtl;
   font-size: 1vw;
   padding: 0 20px;
-  border-radius: 8px;
+  border-radius: 5px;
   background: #d9d9d946;
   color: #FFF;
   font-family: "Peyda-Bold";
@@ -123,7 +123,7 @@
   width: 100%;
   height: 100%;
   background-color: #d9d9d946;
-  border-radius: 8px;
+  border-radius: 5px;
   position: relative;
 }
 .the-picker p {
@@ -154,7 +154,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  border-radius: 8px;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -245,7 +245,7 @@
   top: 100%;
   right: 0;
   left: 0;
-  background: #d9d9d946;
+  background: #7c7c88;
   border-radius: 5px;
   margin-top: 5px;
   z-index: 1000;
@@ -295,6 +295,7 @@
   padding: 0 0 10px 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .members .btn4 {
   width: 30%;
@@ -302,7 +303,7 @@
   border: 0;
   outline: 0;
   background-color: #d9d9d946;
-  border-radius: 8px;
+  border-radius: 5px;
   color: #fff;
   font-family: "Peyda-Bold";
   font-size: 0.6vw;
@@ -336,7 +337,7 @@
 .members .members-preview {
   width: 68%;
   height: 85%;
-  border-radius: 8px;
+  border-radius: 5px;
   background-color: #d9d9d946;
   display: flex;
   flex-direction: row;
@@ -371,7 +372,7 @@
 
 .description {
   width: 100%;
-  padding: 0 0 10px 10px;
+  padding-left: 10px;
 }
 .description textarea {
   width: 100%;
@@ -379,8 +380,60 @@
   resize: none;
   border: 0;
   outline: 0;
-  border-radius: 8px;
+  border-radius: 5px;
   background: #d9d9d946;
   direction: rtl;
   padding: 5px;
+  color: #fff;
+  font-family: "Peyda-Medium";
+}
+
+.submit-btn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit-btn .btn5 {
+  border: none;
+  outline: none;
+  background: #d9d9d946;
+  border-radius: 5px;
+  padding: 0.35vw 1.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.3vw;
+  color: #fff;
+  font-family: "Peyda-Bold";
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
+}
+.btn5 span {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -50px;
+    animation: ripple 1s;
+    opacity: 0;
+}
+@keyframes ripple {
+    from {
+        opacity: 1;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(10);
+    }
+}
+.submit-btn .btn5 .add2 {
+  width: 1.2vw;
 }
