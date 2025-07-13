@@ -15,6 +15,7 @@ import sadra from '../images/sadra.png';
 import './Screen-styles/Home.css';
 import { useState, useEffect } from 'react';
 import AddNewSec from '../Modal/AddNewSec';
+import ChatSetting from '../Modal/ChatSetting';
 
 
 export default function Home() {
@@ -78,7 +79,8 @@ export default function Home() {
         };
     }, []);
 
-    const [showChatSettings, setShowChatSettings] = useState(false);
+    const [showAddNewSection, setShowAddNewSection] = useState(false);
+    const [showChatSetting, setShowChatSetting] = useState(false);
 
 
     return (
@@ -132,66 +134,78 @@ export default function Home() {
                 </div>
 
                 <div className="home-setting">
-                    <button className="btn3">تنظیمات چت&nbsp;&nbsp;&nbsp;&nbsp;<img src={gear} style={{ width: "0.9vw" }} alt="chat setting" /></button>
+                    <button
+                        className="btn3"
+                        onClick={() => setShowChatSetting(true)}
+                    >
+                        تنظیمات چت&nbsp;&nbsp;&nbsp;&nbsp;<img src={gear} style={{ width: "0.9vw" }} alt="chat setting" />
+                    </button>
 
 
                     <button className="btn3">تنظیمات شخصی&nbsp;&nbsp;&nbsp;<img src={accset} style={{ width: "1vw" }} alt="account setting" /></button>
 
                     <button
                         className="btn3"
-                        onClick={() => setShowChatSettings(true)}
+                        onClick={() => setShowAddNewSection(true)}
                     >
                         ساخت بخش جدید&nbsp;&nbsp;&nbsp;<img src={add} style={{ width: "1vw" }} alt="add a new section" />
                     </button>
                 </div>
 
                 <div className="online-users">
-                    <p className="online-per">اعضای آنلاین</p>
-                    <p className="online-en">ONLINE USERS</p>
-                    <div className="scroll2">
-
-                        <div>
-                            <img src={amin} alt="amin" />
-                            <p>امین درون پرور</p>
-                            <p>@dxport</p>
+                    <div className="on-text">
+                        <p className="online-per">اعضای آنلاین</p>
+                        <p className="online-en">ONLINE USERS</p>
+                    </div>
+                    <div className="scroll-keeper">
+                        <div className="scroll2">
+                            <div>
+                                <p>@dxport</p>
+                                <p>امین درون پرور</p>
+                                <img src={amin} alt="amin" />
+                            </div>
+                            
+                            <div>
+                                <p>@naemiorg</p>
+                                <p>علی نعیمی</p>
+                                <img src={ali} alt="ali" />
+                            </div>
+                            
+                            <div>
+                                <p>@SH14</p>
+                                <p>صدرا شعبان نژاد</p>
+                                <img src={sadra} alt="sadra" />
+                            </div>
+                            
+                            <div>
+                                <p>@naemiorg</p>
+                                <p>علی نعیمی</p>
+                                <img src={ali} alt="ali" />
+                            </div>
+                            
+                            <div>
+                                <p>@SH14</p>
+                                <p>صدرا شعبان نژاد</p>
+                                <img src={sadra} alt="sadra" />
+                            </div>
+                            
+                            <div>
+                                <p>@dxport</p>
+                                <p>امین درون پرور</p>
+                                <img src={amin} alt="amin" />
+                            </div>
                         </div>
-                        
-                        <div>
-                            <img src={ali} alt="ali" />
-                            <p>علی نعیمی</p>
-                            <p>@naemiorg</p>
-                        </div>
-                        
-                        <div>
-                            <img src={sadra} alt="sadra" />
-                            <p>صدرا شعبان نژاد</p>
-                            <p>@SH14</p>
-                        </div>
-                        
-                        <div>
-                            <img src={ali} alt="ali" />
-                            <p>علی نعیمی</p>
-                            <p>@naemiorg</p>
-                        </div>
-                        
-                        <div>
-                            <img src={sadra} alt="sadra" />
-                            <p>صدرا شعبان نژاد</p>
-                            <p>@SH14</p>
-                        </div>
-                        
-                        <div>
-                            <img src={amin} alt="amin" />
-                            <p>امین درون پرور</p>
-                            <p>@dxport</p>
-                        </div>
-
                     </div>
                 </div>
 
                 {
-                    showChatSettings && (
-                        <AddNewSec onClose={() => setShowChatSettings(false)}  />
+                    showAddNewSection && (
+                        <AddNewSec onClose={() => setShowAddNewSection(false)}  />
+                    )
+                }
+                {
+                    showChatSetting && (
+                        <ChatSetting onClose={() => setShowChatSetting(false)}  />
                     )
                 }
 

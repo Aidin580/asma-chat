@@ -27,6 +27,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     padding-top: 8vw;
 }
 .content2 .asma-logo2 {
@@ -65,7 +66,9 @@
 
 
 .pages {
-    width: 85%;
+    width: 70vw;
+    max-width: 70vw;
+    height: 12vw;
     max-height: 350px;
 }
 .pages .scroll {
@@ -75,7 +78,7 @@
     overflow-x: auto;
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(170px, 1fr);
+    grid-auto-columns: minmax(12vw, 1fr);
     gap: 1.7vw;
     scroll-behavior: smooth;
 }
@@ -167,7 +170,7 @@
     align-items: center;
     justify-content: center;
     font-family: "Peyda-Bold";
-    padding: 1px 5px;
+    padding: 0.1vw 0.3vw;
     border: solid 3px #d9d9d95e;
     border-radius: 15px;
     background-color: transparent;
@@ -203,14 +206,19 @@
 }
 
 .online-users {
-    width: 85%;
-    height: 31%;
+    width: 65vw;
+    max-width: 1300px;
+    height: 13vw;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-left: solid 3px #d9d9d95e;
     border-right: solid 3px #d9d9d95e;
     border-top: solid 3px #d9d9d95e;
     padding: 20px 40px;
+    display: grid;
+    grid-template-rows: 30% 70%;
+}
+.on-text {
     text-align: center;
 }
 .online-per {
@@ -227,13 +235,17 @@
     letter-spacing: 4px;
     margin-bottom: 17px;
 }
+.online-users .scroll-keeper {
+    width: 60vw;
+    max-width: 60vw;
+}
 .online-users .scroll2 {
-    width: 100%;
+    width: auto;
     height: 100%;
     max-height: 200px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 1.5vw;
+    row-gap: 1.2vw;
     column-gap: 1.5vw;
     overflow-y: auto;
     justify-content: start;
@@ -242,38 +254,40 @@
 .online-users .scroll2 div{
     height: 2.8vw;
     border-radius: 15px;
-    border: solid 3px #d9d9d950;
-    display: flex;
-    flex-direction: row-reverse;
+    border: solid 0.2vw #d9d9d950;
+    display: grid;
+    grid-template-columns: 44.5% 44.5% 10%;
     align-items: center;
-    justify-content: end;
 }
 .online-users .scroll2 div img {
-    width: 1.8vw;
+    width: 100%;
     border-radius: 10px;
-    margin: 5px;
 }
 .online-users .scroll2 div p:first-of-type {
     font-family: "Peyda-Medium";
     font-size: 0.8vw;
     background-color: #d9d9d950;
     color: #FFF;
-    width: 130px;
-    height: 35px;
-    line-height: 35px;
-    margin: 5px;
+    width: 95%;
+    height: 80%;
+    margin: 0.3vw;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .online-users .scroll2 div p:last-of-type {
     font-family: "Peyda-Bold";
     font-size: 0.8vw;
     background-color: #d9d9d950;
     color: #FFF;
-    width: 130px;
-    height: 35px;
-    line-height: 35px;
-    margin: 5px;
+    width: 95%;
+    height: 80%;
+    margin: 0.2vw;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 button {

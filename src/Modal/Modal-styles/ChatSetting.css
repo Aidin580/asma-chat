@@ -1,0 +1,51 @@
+.modal-content2 {
+    padding-bottom: 60px;
+}
+
+.settings {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.settings div label {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 91% 9%;
+    border-bottom: solid 1px #d9d9d991;
+    cursor: pointer;
+}
+.settings div label div:first-child {
+    font-family: "Peyda-Medium";
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-right: 0.8vw;
+}
+.settings div label div:first-child h5 {
+    color: #fff;
+    font-weight: 500;
+}
+.settings div label div:first-child p {
+    color: #d9d9d983;
+    font-size: 0.7vw;
+}
+.settings div label div:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.settings div label div:last-child img {
+    background-color: #d9d9d95b;
+    width: 2.4vw;
+    height: 2.4vw;
+    padding: 0.45vw;
+    border-radius: 7px;
+}
+
+.settings div #last {
+    border: none;
+}
