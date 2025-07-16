@@ -1,0 +1,133 @@
+.modal-content3 {
+    width: 550px;
+    min-width: 550px;
+    height: 650px;
+    min-height: 650px;
+    grid-template-rows: 5% 10% 85%;
+}
+
+.txt h4 {
+  display: flex;
+  column-gap: 3px;
+  color: #FFF;
+  font-size: 0.7vw;
+  text-wrap: nowrap;
+}
+.txt p {
+  display: flex;
+  align-items: center;
+  font-family: "Peyda-Medium";
+  color: #d9d9d94d;
+  font-size: 0.6vw;
+  text-wrap: nowrap;
+}
+
+.Profile-section {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 30% 70%;
+}
+.user-profile {
+    display: grid;
+    grid-template-columns: 67% 27%;
+    align-items: center;
+    justify-content: space-between;
+}
+.user-profile .user-image-keeper .ali-pic {
+    width: 100%;
+    height: 100%;
+}
+.user-name {
+    direction: rtl;
+    color: #FFF;
+    font-family: "Peyda-Bold";
+    font-size: 1.4vw;
+    margin-bottom: 0.2vw;
+}
+.more-user-data {
+    display: grid;
+    grid-template-columns: 0.9fr 1fr 1fr;
+    direction: rtl;
+    font-family: "Peyda-Medium";
+    color: #d9d9d980;
+    font-size: 0.8vw;
+}
+.role {
+    display: flex;
+    align-items: center;
+}
+.role-color {
+    width: 0.5vw;
+    height: 0.5vw;
+    background: #de890079;
+    border-radius: 50%;
+}
+.edit-profile {
+    direction: rtl;
+    display: flex;
+    align-items: center;
+    column-gap: 0.3vw;
+    font-family: "Peyda-Medium";
+    color: #d9d9d980;
+    font-size: 0.7vw;
+}
+.edit-profile .edit-icon {
+    width: 0.7vw;
+    fill: #d9d9d980;
+}
+
+.profile-settings {
+    width: 100%;
+    height: 76%;
+
+}
+
+.settings2 {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+.settings2 div label {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 91% 9%;
+    border-bottom: solid 1px #d9d9d991;
+    cursor: pointer;
+}
+.settings2 div label div:first-child {
+    font-family: "Peyda-Medium";
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-right: 0.8vw;
+}
+.settings2 div label div:first-child h5 {
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.9vw;
+}
+.settings2 div label div:first-child p {
+    color: #d9d9d983;
+    font-size: 0.7vw;
+}
+.settings2 div label div:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.settings2 div label div:last-child img {
+    background-color: #d9d9d95b;
+    width: 2.4vw;
+    height: 2.4vw;
+    padding: 0.45vw;
+    border-radius: 7px;
+}
+
+.settings2 div #last {
+    border: none;
+}

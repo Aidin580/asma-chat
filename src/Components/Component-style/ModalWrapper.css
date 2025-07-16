@@ -1,0 +1,37 @@
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1000; /* بالاتر از همه */
+}
+.fade-in {
+  opacity: 1;
+}
+.fade-out {
+  opacity: 0;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.267);
+  backdrop-filter: blur(12px);
+  padding: 20px 50px;
+  border-radius: 20px;
+  min-width: 650px;
+  min-height: 450px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease-in-out;
+  display: grid;
+  grid-template-rows: 10% 10% 80%;
+}
+.scale-in {
+  transform: scale(1);
+}
+.scale-out {
+  transform: scale(0.8);
+}

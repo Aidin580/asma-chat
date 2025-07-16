@@ -1,0 +1,21 @@
+.back-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: -25px;
+}
+.back-container .back-icon {
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  user-select: none;
+}
+.back-container .back-icon .back-icon-style {
+    width: 1.3vw;
+    transform: rotateZ(-90deg);
+}
+
+.txt h4 .pencil-icon {
+    width: 1vw;
+}
