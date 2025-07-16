@@ -6,7 +6,6 @@ import dropdown from '../images/dropdown-icon.svg';
 import { useState, useEffect } from 'react';
 import '../Modal/Modal-styles/AddNewSec.css';
 
-// dynamic import members
 const importMembers = require.context('../images/members', false, /\.svg$/);
 const members = importMembers
   .keys()
@@ -53,7 +52,6 @@ export default function AddNewSec({ onClose }) {
     return () => clearTimeout(timer);
   }, [imagePreview]);
 
-  // Ripple effect handler generator
   const getRippleHandler = () => function (e) {
     const ripple = document.createElement('span');
     ripple.classList.add('ripple');
@@ -74,8 +72,7 @@ export default function AddNewSec({ onClose }) {
   }, []);
 
   return (
-    <div className={`modal-overlay ${visible ? 'fade-in' : 'fade-out'}`} onClick={handleClose}>
-      <div className={`modal-content ${visible ? 'scale-in' : 'scale-out'}`} onClick={e => e.stopPropagation()}>
+      <div className={`modal-container ${visible ? 'show' : 'unshow'}`} onClick={e => e.stopPropagation()}>
         <div className="close-container">
           <button className="close-icon" onClick={handleClose}><img src={close} alt="close" /></button>
         </div>
@@ -159,6 +156,5 @@ export default function AddNewSec({ onClose }) {
           </form>
         </div>
       </div>
-    </div>
   );
 }

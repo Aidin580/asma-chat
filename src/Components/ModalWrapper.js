@@ -1,4 +1,4 @@
-import '../Modal/Modal-styles/ChatSetting.css';
+import '../Components/Component-style/ModalWrapper.css';
 import { useEffect, useState } from 'react';
 
 export default function ModalWrapper({ children, onClose }) {
@@ -20,12 +20,7 @@ export default function ModalWrapper({ children, onClose }) {
       className={`modal-overlay ${visible ? 'fade-in' : 'fade-out'}`}
       onClick={handleClose}
     >
-      <div
-        className={`modal-content ${visible ? 'scale-in' : 'scale-out'}`}
-        onClick={(e) => e.stopPropagation()}
-      >
         {children}
-      </div>
     </div>
   );
 }

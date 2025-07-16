@@ -4,11 +4,24 @@ import hamburger_list from '../images/hamburger-list.svg';
 import star from '../images/star.svg';
 import membeers from '../images/members.svg';
 
+import '../Modal/Modal-styles/ChatSetting.css';
+import { useEffect, useState } from 'react';
+
 export default function ChatSetting({ onClose, onOpenSections }) {
+
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+          setVisible(true);
+        }, []);
+  const handleClose = () => {
+          setVisible(false);
+          setTimeout(onClose, 300);
+  };
+
   return (
-    <div className="">
+    <div className={`modal-container-cs ${visible ? 'show' : 'unshow'}`} onClick={(e) => e.stopPropagation()}>
       <div className="close-container">
-        <button className="close-icon" onClick={onClose}>
+        <button className="close-icon" onClick={handleClose}>
           <img src={close} alt="close" />
         </button>
       </div>

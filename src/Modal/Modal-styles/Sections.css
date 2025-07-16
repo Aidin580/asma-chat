@@ -1,3 +1,22 @@
+.modal-container-s {
+  background: #ffffff44;
+  backdrop-filter: blur(12px);
+  padding: 1vw 2.8vw;
+  border-radius: 20px;
+  width: 40vw;
+  height: 29vw;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  display: grid;
+  grid-template-rows: 10% 10% 80%;
+  transition: opacity 0.3s ease-in-out;
+}
+.fade-in {
+  opacity: 1;
+}
+.fade-out {
+  opacity: 0;
+}
+
 .back-container {
     display: flex;
     align-items: center;

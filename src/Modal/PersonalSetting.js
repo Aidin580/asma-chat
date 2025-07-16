@@ -23,9 +23,7 @@ export default function PersonalSetting({ onClose }) {
     };
 
     return (
-        <div className={`modal-overlay ${visible ? 'fade-in' : 'fade-out'}`} onClick={handleClose}>
-            <div className={`modal-content ${visible ? 'scale-in' : 'scale-out'} modal-content3`} onClick={(e) => e.stopPropagation()}>
-
+            <div className={`modal-container-ps ${visible ? 'show' : 'unshow'}`} onClick={(e) => e.stopPropagation()}>
                 <div className="close-container">
                     <button className="close-icon" onClick={handleClose}><img src={close} alt="close" /></button>
                 </div>
@@ -113,8 +111,6 @@ export default function PersonalSetting({ onClose }) {
                     </div>
 
                 </div>
-
             </div>
-        </div>
     )
 }

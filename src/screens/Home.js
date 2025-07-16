@@ -51,7 +51,6 @@ export default function Home() {
     };
   }, []);
 
-  // مقدار modalPage میتونه 'addNewSection'، 'chatSetting'، 'personalSetting'، 'sections' یا null باشه
   const [modalPage, setModalPage] = useState(null);
 
   function handleCloseModal() {
@@ -63,24 +62,20 @@ export default function Home() {
   }
 
   function handleCloseSections() {
-    // مثلا وقتی Sections بسته میشه میخوایم ChatSetting باز بشه
     setModalPage('chatSetting');
   }
 
   return (
     <div className="container2">
       <div className="content2">
-        <div className="asma-logo2">
-          <img src={logo} alt="logo and Name" />
-        </div>
         <div className="saying-welcome2">
+          <img className="the-main-logo" src={logo} alt="logo and Name" />
           <h1 className="twc2">TOGETHER WE CAN</h1>
           <p className="togetxt2">به چت سازمانی گروه اسما خوش آمدید,وارد حساب کاربری خود شوید.</p>
         </div>
 
         <div className="pages">
           <div className="scroll">
-            {/* ... بقیه کانتنت ها ... */}
             <div className="sjm-vip">
               <img src={sjm} alt="sjm vip logo" />
               <h3>بخش ویژه سامانه جامع</h3>
@@ -139,7 +134,6 @@ export default function Home() {
           </div>
           <div className="scroll-keeper">
             <div className="scroll2">
-              {/* اعضای آنلاین */}
               <div>
                 <p>@dxport</p>
                 <p>امین درون پرور</p>

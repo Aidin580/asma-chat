@@ -1,39 +1,22 @@
-.modal-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  z-index: 1000;
-}
-.fade-in {
-  opacity: 1;
-}
-.fade-out {
-  opacity: 0;
-}
-
-.modal-content {
-  background: rgba(255, 255, 255, 0.267);
+.modal-container-cs {
+  background: #ffffff44;
   backdrop-filter: blur(12px);
-  padding: 20px 50px;
+  padding: 1vw 2.8vw;
   border-radius: 20px;
-  min-width: 650px;
-  min-height: 450px;
+  width: 40vw;
+  height: 29vw;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease-in-out;
   display: grid;
   grid-template-rows: 10% 10% 80%;
+  transition: transform 0.3s ease-in-out ,opacity 0.3s ease-in-out;
 }
-.scale-in {
+.show {
+  opacity: 1;
   transform: scale(1);
 }
-.scale-out {
-  transform: scale(0.8);
+.unshow {
+  opacity: 0;
+  transform: scale(0.7);
 }
 
 .settings {
@@ -62,11 +45,11 @@
 .settings div label div:first-child h5 {
     color: #fff;
     font-weight: 500;
-    font-size: 0.9vw;
+    font-size: 1.1vw;
 }
 .settings div label div:first-child p {
     color: #d9d9d983;
-    font-size: 0.7vw;
+    font-size: 0.9vw;
 }
 .settings div label div:last-child {
     display: flex;
@@ -75,10 +58,11 @@
 }
 .settings div label div:last-child img {
     background-color: #d9d9d95b;
-    width: 2.4vw;
-    height: 2.4vw;
+    width: 2.9vw;
+    height: 2.9vw;
     padding: 0.45vw;
     border-radius: 7px;
+    box-shadow: -3px 3px 10px #000000a1;
 }
 
 .settings div #last {
