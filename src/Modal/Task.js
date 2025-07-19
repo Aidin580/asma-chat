@@ -1,12 +1,10 @@
 import back from '../images/dropdown-icon.svg';
 import edit2 from '../images/edit-icon2.svg';
 
-
 import { useEffect, useState } from 'react';
-import '../Modal/Modal-styles/Sections.css';
+import './Modal-styles/Task.css';
 
-
-export default function Sections({ onClose }) {
+export default function Task({ onClose }) {
 
     const [visible, setVisible] = useState(false);
     const handleClose = () => {

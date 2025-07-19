@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import '../Modal/Modal-styles/PersonalSetting.css';
 
 
-export default function PersonalSetting({ onClose }) {
+export default function PersonalSetting({ onClose2 }) {
 
     const [visible, setVisible] = useState(false);
     useEffect(() => {
@@ -19,11 +19,11 @@ export default function PersonalSetting({ onClose }) {
           }, []);
     const handleClose = () => {
             setVisible(false);
-            setTimeout(onClose, 300);
+            setTimeout(onClose2, 300);
     };
 
     return (
-            <div className={`modal-container-ps ${visible ? 'show' : 'unshow'}`} onClick={(e) => e.stopPropagation()}>
+            <div className={`modal-container-ps ${visible ? 'fade-in' : 'fade-out'}`}>
                 <div className="close-container">
                     <button className="close-icon" onClick={handleClose}><img src={close} alt="close" /></button>
                 </div>
@@ -43,7 +43,7 @@ export default function PersonalSetting({ onClose }) {
                             </div>
 
                             <div className="more-user-data">
-                                <p className="role">سمت: مدیر&nbsp;<div className="role-color" /></p>
+                                <p className="role">سمت: مدیر&nbsp;<div className="role-color"></div></p>
                                 <p>NAEMIORG@</p>
                                 <p>989212580537+</p>
                             </div>

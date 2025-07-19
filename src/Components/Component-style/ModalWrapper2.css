@@ -1,4 +1,4 @@
-.modal-overlay {
+.modal-overlay2 {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,26 +10,30 @@
   align-items: center;
   justify-content: center;
   transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+.fade-in2 {
+  opacity: 1;
+  display: flex;
+}
+.fade-out2 {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.modal-content {
+.modal-content2 {
   background: #ffffff44;
   backdrop-filter: blur(20px);
   padding: 1vw 2.8vw;
   border-radius: 20px;
-  width: 40vw;
-  height: 29vw;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
   display: grid;
   grid-template-rows: 10% 10% 80%;
   transition: opacity 0.3s ease-in-out ,transform 0.3s ease-in-out;
-  transform: scale(0.7);
-}
-.show {
-  opacity: 1;
-  transform: scale(1);
-}
-.unshow {
   opacity: 0;
   transform: scale(0.7);
+}
+.show2 {
+  opacity: 1;
+  transform: scale(1);
 }

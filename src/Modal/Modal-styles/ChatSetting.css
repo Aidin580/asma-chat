@@ -1,22 +1,15 @@
 .modal-container-cs {
-  background: #ffffff44;
-  backdrop-filter: blur(12px);
-  padding: 1vw 2.8vw;
-  border-radius: 20px;
-  width: 40vw;
-  height: 29vw;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  width: 100%;
+  height: 26vw;
   display: grid;
   grid-template-rows: 10% 10% 80%;
-  transition: transform 0.3s ease-in-out ,opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
-.show {
+.fade-in {
   opacity: 1;
-  transform: scale(1);
 }
-.unshow {
+.fade-out {
   opacity: 0;
-  transform: scale(0.7);
 }
 
 .settings {
@@ -62,7 +55,6 @@
     height: 2.9vw;
     padding: 0.45vw;
     border-radius: 7px;
-    box-shadow: -3px 3px 10px #000000a1;
 }
 
 .settings div #last {

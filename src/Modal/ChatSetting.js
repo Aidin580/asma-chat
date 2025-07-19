@@ -5,21 +5,15 @@ import star from '../images/star.svg';
 import membeers from '../images/members.svg';
 
 import '../Modal/Modal-styles/ChatSetting.css';
-import { useEffect, useState } from 'react';
 
-export default function ChatSetting({ onClose, onOpenSections }) {
+export default function ChatSetting({ onClose, onOpenSections, onOpenMemberSetting, onOpenTask }) {
 
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-          setVisible(true);
-        }, []);
   const handleClose = () => {
-          setVisible(false);
-          setTimeout(onClose, 300);
+    onClose();
   };
 
   return (
-    <div className={`modal-container-cs ${visible ? 'show' : 'unshow'}`} onClick={(e) => e.stopPropagation()}>
+    <div className="modal-container-cs">
       <div className="close-container">
         <button className="close-icon" onClick={handleClose}>
           <img src={close} alt="close" />
@@ -34,7 +28,6 @@ export default function ChatSetting({ onClose, onOpenSections }) {
       <div className="settings">
         <div className="sections">
           <label onClick={() => {
-              onClose();
               onOpenSections();
           }}>
             <div className="texts-keeper">
@@ -48,7 +41,9 @@ export default function ChatSetting({ onClose, onOpenSections }) {
         </div>
 
         <div className="members-settings">
-          <label>
+          <label onClick={() => {
+            onOpenMemberSetting();
+          }}>
             <div className="texts-keeper">
               <h5>مدیریت اعضاء</h5>
               <p>ویرایش اطلاعات، افزودن، حذف و تنظیمات کلی مربوط به اعضاء</p>
@@ -60,7 +55,9 @@ export default function ChatSetting({ onClose, onOpenSections }) {
         </div>
 
         <div className="tasks">
-          <label id="last">
+          <label id="last" onClick={() => {
+            onOpenTask();
+          }}>
             <div className="texts-keeper">
               <h5>تسک ها</h5>
               <p>تنظیم تمام گزینه های مربوط به تسک ها و مشاهده تسک های در جریان</p>

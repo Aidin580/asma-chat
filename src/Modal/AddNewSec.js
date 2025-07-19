@@ -12,7 +12,7 @@ const members = importMembers
   .sort()
   .map(importMembers);
 
-export default function AddNewSec({ onClose }) {
+export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
   const [visible, setVisible] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [showLayer, setShowLayer] = useState(false);
@@ -72,7 +72,7 @@ export default function AddNewSec({ onClose }) {
   }, []);
 
   return (
-      <div className={`modal-container ${visible ? 'show' : 'unshow'}`} onClick={e => e.stopPropagation()}>
+      <div className={`modal-container ${visible ? 'fade-in' : 'fade-out'}`} onClick={e => e.stopPropagation()}>
         <div className="close-container">
           <button className="close-icon" onClick={handleClose}><img src={close} alt="close" /></button>
         </div>
@@ -112,7 +112,6 @@ export default function AddNewSec({ onClose }) {
                     value={value}
                     onClick={() => setShowOptions(!showOptions)}
                     readOnly
-                    style={{ width: '100%', padding: '8px', borderRadius: '5px' }}
                   />
 
                   <ul className={`dropdown-options ${showOptions ? 'show' : ''}`}>
@@ -129,7 +128,15 @@ export default function AddNewSec({ onClose }) {
                 </div>
 
                 <div className="members">
-                  <button className="btn4" title="افزودن فرد جدید">افزودن فرد جدید</button>
+                  <button
+                    onClick={() => {
+                      onOpenSuggestedMembers();
+                    }}
+                    className="btn4"
+                    title="افزودن فرد جدید"
+                    >
+                      افزودن فرد جدید
+                    </button>
 
                   <div className={`members-preview ${members.length >= 8 ? 'tight-margin' : ''}`} style={{ paddingRight: marginLeft }} dir='rtl'>
                     <div className="p-container"><p>اعضای پیش فرض</p></div>

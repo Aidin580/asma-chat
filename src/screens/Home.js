@@ -20,6 +20,10 @@ import AddNewSec from '../Modal/AddNewSec';
 import ChatSetting from '../Modal/ChatSetting';
 import PersonalSetting from '../Modal/PersonalSetting';
 import Sections from '../Modal/Sections';
+import MemberSetting from '../Modal/MemberSetting';
+import Task from '../Modal/Task';
+import SuggestedMembers from '../Modal/SuggestedMembers';
+import ModalWrapper2 from '../Components/ModalWrapper2';
 
 export default function Home() {
   useEffect(() => {
@@ -52,17 +56,25 @@ export default function Home() {
   }, []);
 
   const [modalPage, setModalPage] = useState(null);
+  const [modalPage2, setModalPage2] = useState(null);
 
   function handleCloseModal() {
     setModalPage(null);
   }
-
-  function handleOpenSectionsFromChatSetting() {
-    setModalPage('sections');
+  function handleCloseModal2() {
+    setModalPage2(null);
   }
-
   function handleCloseSections() {
     setModalPage('chatSetting');
+  }
+  function handleCloseMemberSetting() {
+    setModalPage('chatSetting');
+  }
+  function handleCloseTask() {
+    setModalPage('chatSetting');
+  }
+  function handleCloseSuggestedMembers() {
+    setModalPage('addNewSection');
   }
 
   return (
@@ -118,7 +130,7 @@ export default function Home() {
             تنظیمات چت&nbsp;&nbsp;&nbsp;&nbsp;<img src={gear} style={{ width: "0.9vw" }} alt="chat setting" />
           </button>
 
-          <button className="btn3" onClick={() => setModalPage('personalSetting')}>
+          <button className="btn3" onClick={() => setModalPage2('personalSetting')}>
             تنظیمات شخصی&nbsp;&nbsp;&nbsp;<img src={accset} style={{ width: "1vw" }} alt="account setting" />
           </button>
 
@@ -173,25 +185,31 @@ export default function Home() {
           </div>
         </div>
 
-        {/* مودال‌ها به صورت یکجا در ModalWrapper */}
         {modalPage && (
           <ModalWrapper onClose={handleCloseModal}>
-            {modalPage === 'addNewSection' && (
-              <AddNewSec onClose={handleCloseModal} />
-            )}
-            {modalPage === 'chatSetting' && (
-              <ChatSetting
-                onClose={handleCloseModal}
-                onOpenSections={() => setModalPage('sections')}
-              />
-            )}
-            {modalPage === 'personalSetting' && (
-              <PersonalSetting onClose={handleCloseModal} />
-            )}
-            {modalPage === 'sections' && (
-              <Sections onClose={handleCloseSections} />
-            )}
+            {({ handleClose }) => {
+              if (modalPage === 'addNewSection')
+                return <AddNewSec onClose={handleClose} onOpenSuggestedMembers={() => setModalPage('suggestedMembers')} />;
+              if (modalPage === 'chatSetting')
+                return <ChatSetting onClose={handleClose} onOpenSections={() => setModalPage('sections')} onOpenMemberSetting={() => setModalPage('memberSetting')} onOpenTask={() => setModalPage('task')} />;
+              if (modalPage === 'sections')
+                return <Sections onClose={handleCloseSections} />;
+              if (modalPage === 'memberSetting')
+                return <MemberSetting onClose={handleCloseMemberSetting} />;
+              if (modalPage === 'task')
+                return <Task onClose={handleCloseTask} />;
+              if (modalPage === 'suggestedMembers')
+                return <SuggestedMembers onClose={handleCloseSuggestedMembers} />;
+            }}
           </ModalWrapper>
+        )}
+
+       {modalPage2 === 'personalSetting' && (
+          <ModalWrapper2 onClose={handleCloseModal2}>
+            {({ handleClose }) => (
+              <PersonalSetting onClose2={handleClose} />
+            )}
+          </ModalWrapper2>
         )}
 
       </div>
