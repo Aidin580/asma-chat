@@ -16,15 +16,17 @@ export default function Sections({ onClose }) {
     useEffect(() => setVisible(true), []);
 
     return (
-            <div className={`modal-container-s ${visible ? 'fade-in' : 'fade-out'}`} onClick={e => e.stopPropagation()}>
-                <div className="back-container">
-                    <button className="back-icon" onClick={handleClose}><img className="back-icon-style" src={back} alt="back" /></button>
-                </div>
-
-                <div className="txt">
-                    <h4><img src={edit2} className="pencil-icon" alt="add a new section" />افزودن بخش جدید&nbsp;</h4>
-                    <p>| مدیر لیدر گرامی, قبل از هرگونه تغییر لطفا با اعضا هماهنگ کنید.</p>
-                </div>
+        <div className={`modal-container-s ${visible ? 'fade-in' : 'fade-out'}`} onClick={e => e.stopPropagation()}>
+            <div className="back-container">
+                <button className="back-icon" onClick={handleClose}><img className="back-icon-style" src={back} alt="back" /></button>
             </div>
+
+            <div className="txt">
+                <h4><img src={edit2} className="pencil-icon" alt="add a new section" />مدیریت بخش ها&nbsp;</h4>
+                <p>| مدیر لیدر گرامی, قبل از هرگونه تغییر لطفا با اعضا هماهنگ کنید.</p>
+            </div>
+
+            <div className=""></div>
+        </div>
     )
 }

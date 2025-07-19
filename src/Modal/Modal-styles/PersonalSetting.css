@@ -14,10 +14,10 @@
 
 .txt h4 {
   display: flex;
+  align-items: center;
   column-gap: 3px;
   color: #FFF;
   font-size: 0.9vw;
-  text-wrap: nowrap;
 }
 .txt p {
   display: flex;
