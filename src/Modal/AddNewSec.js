@@ -52,24 +52,7 @@ export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
     return () => clearTimeout(timer);
   }, [imagePreview]);
 
-  const getRippleHandler = () => function (e) {
-    const ripple = document.createElement('span');
-    ripple.classList.add('ripple');
-    const rect = this.getBoundingClientRect();
-    ripple.style.left = `${e.clientX - rect.left}px`;
-    ripple.style.top = `${e.clientY - rect.top}px`;
-    this.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 600);
-  };
-
-  useEffect(() => {
-    ['.btn4', '.btn5'].forEach(cls => {
-      const buttons = document.querySelectorAll(cls);
-      const handler = getRippleHandler();
-      buttons.forEach(btn => btn.addEventListener('click', handler));
-      return () => buttons.forEach(btn => btn.removeEventListener('click', handler));
-    });
-  }, []);
+  
 
   return (
       <div className={`modal-container ${visible ? 'fade-in' : 'fade-out'}`} onClick={e => e.stopPropagation()}>
@@ -128,11 +111,11 @@ export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
                 </div>
 
                 <div className="members">
-                  <button
+                  <button // ripleeeeeeeeeeee
                     onClick={() => {
                       onOpenSuggestedMembers();
                     }}
-                    className="btn4"
+                    className="add-new-user"
                     title="افزودن فرد جدید"
                     >
                       افزودن فرد جدید
@@ -158,7 +141,7 @@ export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
             </div>
 
             <div className="submit-btn">
-              <button className="btn5">افزودن بخش جدید<img className="add2" src={add} alt="add a new section" /></button>
+              <button className="add-new-sec">افزودن بخش جدید<img className="add2" src={add} alt="add a new section" /></button> {/* rippleeeeeee */}
             </div>
           </form>
         </div>

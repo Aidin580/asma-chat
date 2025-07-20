@@ -18,7 +18,7 @@
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
 }
-.settings div label {
+.settings div .label-effect {
     width: 100%;
     height: 100%;
     display: grid;
@@ -26,7 +26,7 @@
     border-bottom: solid 1px #d9d9d991;
     cursor: pointer;
 }
-.settings div label div:first-child {
+.settings div .label-effect .texts-keeper {
     font-family: "Peyda-Medium";
     direction: rtl;
     display: flex;
@@ -35,21 +35,21 @@
     align-items: start;
     padding-right: 0.8vw;
 }
-.settings div label div:first-child h5 {
+.settings div .label-effect .texts-keeper h5 {
     color: #fff;
     font-weight: 500;
     font-size: 1.1vw;
 }
-.settings div label div:first-child p {
+.settings div .label-effect .texts-keeper p {
     color: #d9d9d983;
     font-size: 0.9vw;
 }
-.settings div label div:last-child {
+.settings div .label-effect div:last-child {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.settings div label div:last-child img {
+.settings div .label-effect div:last-child img {
     background-color: #d9d9d95b;
     width: 2.9vw;
     height: 2.9vw;

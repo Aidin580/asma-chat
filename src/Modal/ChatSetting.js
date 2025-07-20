@@ -5,6 +5,7 @@ import star from '../images/star.svg';
 import membeers from '../images/members.svg';
 
 import '../Modal/Modal-styles/ChatSetting.css';
+import RippleEffect from '../Effect/RippleEffect';
 
 export default function ChatSetting({ onClose, onOpenSections, onOpenMemberSetting, onOpenTask }) {
 
@@ -27,9 +28,7 @@ export default function ChatSetting({ onClose, onOpenSections, onOpenMemberSetti
 
       <div className="settings">
         <div className="sections">
-          <label onClick={() => {
-              onOpenSections();
-          }}>
+          <RippleEffect className="label-effect" onClick={() => {onOpenSections()}}>
             <div className="texts-keeper">
               <h5>بخش ها</h5>
               <p>مدیریت و ویرایش و سازماندهی بخش های چت</p>
@@ -37,13 +36,11 @@ export default function ChatSetting({ onClose, onOpenSections, onOpenMemberSetti
             <div className="icon-keeper">
               <img src={hamburger_list} alt="hamburger-icon" />
             </div>
-          </label>
+          </RippleEffect>
         </div>
 
         <div className="members-settings">
-          <label onClick={() => {
-            onOpenMemberSetting();
-          }}>
+          <RippleEffect className="label-effect" onClick={() => {onOpenMemberSetting()}}>
             <div className="texts-keeper">
               <h5>مدیریت اعضاء</h5>
               <p>ویرایش اطلاعات، افزودن، حذف و تنظیمات کلی مربوط به اعضاء</p>
@@ -51,13 +48,11 @@ export default function ChatSetting({ onClose, onOpenSections, onOpenMemberSetti
             <div className="icon-keeper">
               <img src={membeers} alt="members-icon" />
             </div>
-          </label>
+          </RippleEffect>
         </div>
 
         <div className="tasks">
-          <label id="last" onClick={() => {
-            onOpenTask();
-          }}>
+          <RippleEffect className="label-effect" id="last" onClick={() => {onOpenTask()}}>
             <div className="texts-keeper">
               <h5>تسک ها</h5>
               <p>تنظیم تمام گزینه های مربوط به تسک ها و مشاهده تسک های در جریان</p>
@@ -65,7 +60,7 @@ export default function ChatSetting({ onClose, onOpenSections, onOpenMemberSetti
             <div className="icon-keeper">
               <img src={star} alt="star-icon" />
             </div>
-          </label>
+          </RippleEffect>
         </div>
       </div>
     </div>
