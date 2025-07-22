@@ -42,10 +42,11 @@
   height: 100%;
   display: grid;
   grid-template-rows: 3fr 2fr;
+  user-select: none;
 }
 .sections-list .scroll3-container {
   width: 100%;
-  height: 100%;
+  height: 100% !important;
   overflow-y: auto;
   direction: rtl;
 }
@@ -69,23 +70,69 @@
   row-gap: 1vw;
   scroll-behavior: smooth;
 }
-.sections-list .scroll3 div {
+.sections-list .scroll3 .sec-list-item {
   width: 100%;
-  height: 3.5vw;
-  background-color: #d9d9d973;
+  height: 3.7vw;
+  background: #d9d9d95b;
   border-radius: 5px;
   display: grid;
+  grid-template-columns: 12% 73% 15%;
 }
+.section-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section-logo-img {
+  background: #d9d9d986;
+  width: 3.5vw;
+  height: 3.3vw;
+  border-radius: 5px;
+  padding: 0.3vw;
+}
+.section-information {
+  display: grid;
+  grid-template-columns: 30% 30% 40%;
+  margin-right: 0.8vw;
+  color: #d9d9d94d;
+  font-size: 0.7vw;
+  align-items: center;
+}
+.section-information p:first-child {
+  font-family: "Peyda-Bold";
+  color: #fff;
+  font-size: 0.8vw;
+}
+.edit-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.edit-section-logo {
+  background: #d9d9d986;
+  width: 4.6vw;
+  height: 3.1vw;
+  border-radius: 5px;
+  padding: 0.8vw;
+}
+.centerize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .add-one-btn-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .add-one-btn-container .make-sec {
+  font-size: 1vw;
   font-family: "Peyda-Medium";
   color: #fff;
-  padding: 4px 6px;
-  border-radius: 15px;
+  padding: 0.4vw 1vw;
+  border-radius: 25px;
   border: solid 2px #d9d9d946;
   outline: none;
   background-color: transparent;
@@ -93,4 +140,5 @@
   align-items: center;
   column-gap: 0.2vw;
   cursor: pointer;
+  user-select: none;
 }

@@ -20,6 +20,7 @@
     justify-content: center;
     align-items: start;
     overflow: hidden;
+    position: fixed;
 }
 .content2 {
     width: 70%;
@@ -37,6 +38,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 1vw;
+    user-select: none;
 }
 .the-main-logo {
     width: 60%;
@@ -87,6 +89,7 @@
     align-self: center;
     text-align: center;
     padding: 1.5vw 0;
+    user-select: none;
 }
 .pages .scroll div img {
     margin: 0 auto;
@@ -214,6 +217,7 @@
     padding: 20px 40px;
     display: grid;
     grid-template-rows: 30% 70%;
+    user-select: none;
 }
 .on-text {
     text-align: center;

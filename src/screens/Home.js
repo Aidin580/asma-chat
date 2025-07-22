@@ -193,7 +193,7 @@ export default function Home() {
               if (modalPage === 'chatSetting')
                 return <ChatSetting onClose={handleClose} onOpenSections={() => setModalPage('sections')} onOpenMemberSetting={() => setModalPage('memberSetting')} onOpenTask={() => setModalPage('task')} />;
               if (modalPage === 'sections')
-                return <Sections onClose={handleCloseSections} />;
+                return <Sections onClose={handleCloseSections} onOpenaddNewSec={() => setModalPage('addNewSection')} />;
               if (modalPage === 'memberSetting')
                 return <MemberSetting onClose={handleCloseMemberSetting} />;
               if (modalPage === 'task')

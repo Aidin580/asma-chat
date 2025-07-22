@@ -25,6 +25,7 @@
     grid-template-columns: 91% 9%;
     border-bottom: solid 1px #d9d9d991;
     cursor: pointer;
+    user-select: none;
 }
 .settings div .label-effect .texts-keeper {
     font-family: "Peyda-Medium";

@@ -22,7 +22,7 @@ export default function ChatSetting({ onClose, onOpenSections, onOpenMemberSetti
       </div>
 
       <div className="txt">
-        <h4><img src={gear} alt="gear icon" />&nbsp;تنظیمات چت&nbsp;</h4>
+        <p><img src={gear} alt="gear icon" />&nbsp;تنظیمات چت&nbsp;</p>
         <p>| مدیر لیدر گرامی, قبل از هرگونه تغییر لطفا با اعضا هماهنگ کنید.</p>
       </div>
 

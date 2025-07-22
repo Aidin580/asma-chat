@@ -9,6 +9,7 @@ import exit from '../images/log-out-icon.svg';
 
 import { useEffect, useState } from 'react';
 import '../Modal/Modal-styles/PersonalSetting.css';
+import RippleEffect from '../Effect/RippleEffect';
 
 
 export default function PersonalSetting({ onClose2 }) {
@@ -29,7 +30,7 @@ export default function PersonalSetting({ onClose2 }) {
                 </div>
 
                 <div className="txt">
-                    <h4><img src={personal_setting} alt="add a new section" />تنظیمات شخصی&nbsp;</h4>
+                    <p><img src={personal_setting} alt="add a new section" />تنظیمات شخصی&nbsp;</p>
                     <p>| مدیر لیدر گرامی, قبل از هرگونه تغییر لطفا با اعضا هماهنگ کنید.</p>
                 </div>
 
@@ -62,7 +63,7 @@ export default function PersonalSetting({ onClose2 }) {
                     <div className="profile-settings">
                         <div className="settings2">
                             <div className="name-change">
-                                <label>
+                                <RippleEffect className="ps-label-effect">
                                     <div className="texts-keeper">
                                         <h5>ویراش نام کاربری</h5>
                                         <p>نام کاربری خود را ویرایش کنید</p>
@@ -70,11 +71,11 @@ export default function PersonalSetting({ onClose2 }) {
                                     <div className="icon-keeper">
                                         <img src={edit2} alt="edit-icon" />
                                     </div>
-                                </label>
+                                </RippleEffect>
                             </div>
 
                             <div className="phone-change">
-                                <label>
+                                <RippleEffect className="ps-label-effect">
                                     <div className="texts-keeper">
                                         <h5>ویرایش شماره تماس</h5>
                                         <p>ویرایش شماره تماس نیازمند به تایید لیدر ها یا مدیران دارد.</p>
@@ -82,11 +83,11 @@ export default function PersonalSetting({ onClose2 }) {
                                     <div className="icon-keeper">
                                         <img src={phone} alt="phone-icon" />
                                     </div>
-                                </label>
+                                </RippleEffect>
                             </div>
                             
                             <div className="pass-change">
-                                <label>
+                                <RippleEffect className="ps-label-effect">
                                     <div className="texts-keeper">
                                         <h5>ویرایش رمز عبور</h5>
                                         <p>ویرایش رمز عبور (در صورت فراموشی رمز عبور خود از لیدر تیم بپرسید)</p>
@@ -94,18 +95,18 @@ export default function PersonalSetting({ onClose2 }) {
                                     <div className="icon-keeper">
                                         <img src={lock} alt="lock-icon" />
                                     </div>
-                                </label>
+                                </RippleEffect>
                             </div>
 
                             <div className="log-out-cont">
-                                <label id="last">
+                                <RippleEffect className="ps-label-effect" id="last">
                                     <div className="texts-keeper">
                                         <h5>ویرایش رمز عبور</h5>
                                     </div>
                                     <div className="icon-keeper">
                                         <img src={exit} alt="hamburger-icon" />
                                     </div>
-                                </label>
+                                </RippleEffect>
                             </div>
                         </div>
                     </div>

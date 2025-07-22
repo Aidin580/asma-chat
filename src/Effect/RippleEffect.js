@@ -1,33 +1,38 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import './RippleEffect.css';
 
 export default function RippleEffect({ children, onClick, className = '', ...rest }) {
-  const [ripples, setRipples] = useState([]);
+  const containerRef = useRef(null);
 
-  const createRipple = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
+  const handleClick = (e) => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const rect = container.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const newRipple = { x, y, id: Date.now() };
-    setRipples((prev) => [...prev, newRipple]);
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
 
-    setTimeout(() => {
-      setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));
-    }, 600);
+    container.appendChild(ripple);
+
+    ripple.addEventListener('animationend', () => {
+      ripple.remove();
+    });
 
     if (onClick) onClick(e);
   };
 
   return (
-    <div className={`ripple-effect-container ${className}`} onClick={createRipple} {...rest}>
-      {ripples.map((r) => (
-        <span
-          key={r.id}
-          className="ripple"
-          style={{ left: r.x, top: r.y }}
-        />
-      ))}
+    <div
+      className={`ripple-effect-container ${className}`}
+      onClick={handleClick}
+      ref={containerRef}
+      {...rest}
+    >
       {children}
     </div>
   );

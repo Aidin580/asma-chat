@@ -22,7 +22,7 @@ export default function SuggestedMembers({ onClose }) {
                 </div>
 
                 <div className="txt">
-                    <h4><img src={edit2} className="pencil-icon" alt="add a new section" />افزودن بخش جدید&nbsp;</h4>
+                    <p><img src={edit2} className="pencil-icon" alt="add a new section" />افزودن بخش جدید&nbsp;</p>
                 </div>
             </div>
     )

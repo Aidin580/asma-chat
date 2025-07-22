@@ -5,6 +5,7 @@ import dropdown from '../images/dropdown-icon.svg';
 
 import { useState, useEffect } from 'react';
 import '../Modal/Modal-styles/AddNewSec.css';
+import RippleEffect from '../Effect/RippleEffect';
 
 const importMembers = require.context('../images/members', false, /\.svg$/);
 const members = importMembers
@@ -61,7 +62,7 @@ export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
         </div>
 
         <div className="txt">
-          <h4><img src={add} alt="add a new section" />افزودن بخش جدید&nbsp;</h4>
+          <p><img src={add} alt="add a new section" />افزودن بخش جدید&nbsp;</p>
           <p>| مدیر لیدر گرامی, قبل از هرگونه تغییر لطفا با اعضا هماهنگ کنید.</p>
         </div>
 
@@ -103,7 +104,7 @@ export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
                     ))}
                   </ul>
 
-                  <label htmlFor="dropdown-btn" className="dr-btn-lbl">
+                  <label htmlFor="dropdown-btn" className="option-keeper">
                     <div className="dropdown-cont">
                       <img className={`dropdown ${showOptions ? 'rotate' : ''}`} src={dropdown} alt="dropdown-icon" />
                     </div>
@@ -111,7 +112,7 @@ export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
                 </div>
 
                 <div className="members">
-                  <button // ripleeeeeeeeeeee
+                  <RippleEffect
                     onClick={() => {
                       onOpenSuggestedMembers();
                     }}
@@ -119,7 +120,7 @@ export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
                     title="افزودن فرد جدید"
                     >
                       افزودن فرد جدید
-                    </button>
+                  </RippleEffect>
 
                   <div className={`members-preview ${members.length >= 8 ? 'tight-margin' : ''}`} style={{ paddingRight: marginLeft }} dir='rtl'>
                     <div className="p-container"><p>اعضای پیش فرض</p></div>
@@ -141,7 +142,7 @@ export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
             </div>
 
             <div className="submit-btn">
-              <button className="add-new-sec">افزودن بخش جدید<img className="add2" src={add} alt="add a new section" /></button> {/* rippleeeeeee */}
+              <RippleEffect className="add-new-sec">افزودن بخش جدید<img className="add2" src={add} alt="add a new section" /></RippleEffect>
             </div>
           </form>
         </div>
