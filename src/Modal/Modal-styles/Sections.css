@@ -33,15 +33,15 @@
 .mbc {
   margin-bottom: 1vw;
 }
-.txt h4 .pencil-icon {
-    width: 1vw;
+.txt p .pencil-icon {
+  width: 1vw;
 }
 
 .sections-list {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: 3fr 2fr;
+  grid-template-rows: 3.1fr 1.9fr;
   user-select: none;
 }
 .sections-list .scroll3-container {

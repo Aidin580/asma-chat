@@ -66,7 +66,7 @@ export default function MemberSetting({ onClose }) {
                             <div className="user-information">
                                 <div className="user-name-id">
                                     <p className="member-name">عارف طالبی</p>
-                                    <p className="member-username">areftg@&nbsp;<div className="user-role-color-golden"></div></p>
+                                    <p className="member-username">areftg@&nbsp;<div className="user-role-color-blue"></div></p>
                                 </div>
 
                                 <div className="user-skills">
@@ -135,7 +135,7 @@ export default function MemberSetting({ onClose }) {
                             <div className="user-information">
                                 <div className="user-name-id">
                                     <p className="member-name">محمد امین صدیقی</p>
-                                    <p className="member-username">aminsd@&nbsp;<div className="user-role-color-golden"></div></p>
+                                    <p className="member-username">aminsd@&nbsp;<div className="user-role-color-blue"></div></p>
                                 </div>
 
                                 <div className="user-skills">
