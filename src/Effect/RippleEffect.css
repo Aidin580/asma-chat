@@ -3,6 +3,7 @@
   overflow: hidden;
   cursor: pointer;
   z-index: 0;
+  border-radius: 5px;
 }
 
 .ripple-effect-container .ripple {

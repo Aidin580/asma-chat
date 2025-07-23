@@ -59,11 +59,14 @@ export default function Task({ onClose }) {
                         type="text"
                         id="dropdown-btn2"
                         value={value}
-                        onClick={() => setShowOptions(!showOptions)}
+                        onClick={() => {
+                            setShowOptions(!showOptions);
+                            setShowOptions2(false);
+                        }}
                         readOnly
                     />
 
-                    <ul className={`dropdown-options ${showOptions ? 'show' : ''}`}>
+                    <ul className={`dropdown-options2 ${showOptions ? 'show' : ''}`}>
                         {options.map((option, i) => (
                             <li key={i} onClick={() => handleSelect(option)}>{option}</li>
                         ))}
@@ -83,11 +86,14 @@ export default function Task({ onClose }) {
                         type="text"
                         id="dropdown-btn3"
                         value={value2}
-                        onClick={() => setShowOptions2(!showOptions2)}
+                        onClick={() => {
+                            setShowOptions2(!showOptions2);
+                            setShowOptions(false);
+                        }}
                         readOnly
                     />
 
-                    <ul className={`dropdown-options ${showOptions2 ? 'show' : ''}`}>
+                    <ul className={`dropdown-options2 ${showOptions2 ? 'show' : ''}`}>
                         {options2.map((option2, i) => (
                             <li key={i} onClick={() => handleSelect2(option2)}>{option2}</li>
                         ))}

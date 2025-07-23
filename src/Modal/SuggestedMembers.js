@@ -7,116 +7,98 @@ import user2 from '../images/users/user2.svg';
 import user3 from '../images/users/user3.svg';
 import user4 from '../images/users/user4.svg';
 import user5 from '../images/users/user5.svg';
-import delete_icon from '../images/delete.svg';
+import add_icon from '../images/add.svg';
+import added from '../images/added.svg';
 
 import './Modal-styles/SuggestedMembers.css';
 import RippleEffect from '../Effect/RippleEffect';
 
 export default function MemberSetting({ onClose }) {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => setVisible(true), []);
 
-    const [visible, setVisible] = useState(false);
-    const handleClose = () => {
-            setVisible(false);
-            setTimeout(onClose, 300);
-    };
-    useEffect(() => setVisible(true), []);
+  const handleClose = () => {
+    setVisible(false);
+    setTimeout(onClose, 300);
+  };
+  
+  const [addedUsers, setAddedUsers] = useState({});
 
-    return (
-            <div className={`modal-container-sm ${visible ? 'fade-in' : 'fade-out'}`} onClick={e => e.stopPropagation()}>
-                <div className="back-container">
-                    <button className="back-icon" onClick={handleClose}><img className="back-icon-style" src={back} alt="back" /></button>
-                </div>
+  const toggleAdd = (id) => {
+    setAddedUsers((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+  const suggestedUsers = [
+    { id: 1, name: 'علی نعیمی', username: 'naemiorg@', img: user1 },
+    { id: 2, name: 'عارف طالبی', username: 'areftg@', img: user2 },
+    { id: 3, name: 'محمد امین درون پرور', username: 'dxport@', img: user3 },
+  ];
 
-                <div className="txt-sm">
-                    <p><img src={accadd} className="acc-add-icon" alt="add a new section" />اعضا پیشنهادی&nbsp;</p>
+  const otherUsers = [
+    { id: 4, name: 'صدرا شعبان نژاد', username: 'sh14@', img: user4 },
+    { id: 5, name: 'محمد امین صدیقی', username: 'aminsd@', img: user5 },
+  ];
 
-                    <input className="search-input" type="text" placeholder="جستوجو کنید..." />
-                </div>
+  const renderUser = ({ id, name, username, img }) => (
+    <div key={id} className={`user${id} users`}>
+      <div className="user-img-container">
+        <img className="user-img" src={img} alt={`${name}-user-img`} />
+      </div>
 
-                <div className="sm-list">
-                    <div className="ml-scroll">
+      <div className="user-information">
+        <div className="user-name-id">
+          <p className="member-name">{name}</p>
+          <p className="member-username">{username}</p>
+        </div>
+        <div className="user-skills"></div>
+      </div>
 
-                        <div className="user1 users">
-                            <div className="user-img-container">
-                                <img className="user-img" src={user1} alt="user1-user-img" />
-                            </div>
+      <div className="add-user">
+        <RippleEffect className="centerize2" onClick={() => toggleAdd(id)}>
+          <img
+            className={`add-user-img ${addedUsers[id] ? 'added' : ''}`}
+            src={addedUsers[id] ? added : add_icon}
+            alt="user-add-button"
+          />
+        </RippleEffect>
+      </div>
+    </div>
+  );
 
-                            <div className="user-information">
-                                <div className="user-name-id">
-                                    <p className="member-name">علی نعیمی</p>
-                                    <p className="member-username">naemiorg@</p>
-                                </div>
+  return (
+    <div
+      className={`modal-container-sm ${visible ? 'fade-in' : 'fade-out'}`}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="back-container">
+        <button className="back-icon" onClick={handleClose}>
+          <img className="back-icon-style" src={back} alt="back" />
+        </button>
+      </div>
 
-                                <div className="user-skills">
+      <div className="txt-sm">
+        <p>
+          <img src={accadd} className="acc-add-icon" alt="add a new section" />
+          اعضا پیشنهادی
+        </p>
+        <input className="search-input" type="text" placeholder="جستوجو کنید..." />
+      </div>
 
-                                </div>
-                            </div>
+      <div className="sm-list">
+        <div className="ml-scroll">{suggestedUsers.map(renderUser)}</div>
+      </div>
 
-                            <div className="delete-user">
-                                <RippleEffect className="centerize2">
-                                <img className="delete-user-img" src={delete_icon} alt="user1-section-edit-button" />
-                                </RippleEffect>
-                            </div>
-                        </div>
-                        
-                        <div className="user2 users">
-                            <div className="user-img-container">
-                                <img className="user-img" src={user2} alt="user1-user-img" />
-                            </div>
+      <div className="users-for-adding">
+        <div className="txt-sm2">
+          <p id="mems">
+            <img src={user_logo} className="user-logo-icon" alt="users" />
+            سایر اعضا
+          </p>
+        </div>
 
-                            <div className="user-information">
-                                <div className="user-name-id">
-                                    <p className="member-name">عارف طالبی</p>
-                                    <p className="member-username">areftg@</p>
-                                </div>
-
-                                <div className="user-skills">
-
-                                </div>
-                            </div>
-
-                            <div className="delete-user">
-                                <RippleEffect className="centerize2">
-                                <img className="delete-user-img" src={delete_icon} alt="user1-section-edit-button" />
-                                </RippleEffect>
-                            </div>
-                        </div>
-                        
-                        <div className="user3 users">
-                            <div className="user-img-container">
-                                <img className="user-img" src={user3} alt="user1-user-img" />
-                            </div>
-
-                            <div className="user-information">
-                                <div className="user-name-id">
-                                    <p className="member-name">محمد امین درون پرور</p>
-                                    <p className="member-username">dxport@</p>
-                                </div>
-
-                                <div className="user-skills">
-
-                                </div>
-                            </div>
-
-                            <div className="delete-user">
-                                <RippleEffect className="centerize2">
-                                <img className="delete-user-img" src={delete_icon} alt="user1-section-edit-button" />
-                                </RippleEffect>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div className="users-for-adding">
-                    <div>
-                        <p>سایر اعضا<img src={user_logo} className="user-logo-icon" alt="add a new section" /></p>
-                    </div>
-
-                    <div>
-                        
-                    </div>
-                </div>
-            </div>
-    )
+        <div className="sm-list2">
+          <div className="ml-scroll2">{otherUsers.map(renderUser)}</div>
+        </div>
+      </div>
+    </div>
+  );
 }

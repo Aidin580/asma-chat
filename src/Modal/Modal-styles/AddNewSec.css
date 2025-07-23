@@ -183,7 +183,7 @@
   align-items: center;
   user-select: none;
 }
-.dr-btn-lbl .dropdown {
+.option-keeper .dropdown {
   transition: transform 0.3s ease;
   background-color: transparent;
   width: 2.2vw;
@@ -194,9 +194,9 @@
 /* Dropdown list */
 .dropdown-options {
   position: absolute;
-  top: 100%;
-  right: 0;
-  left: 0;
+  top: 90%;
+  right: 4.2vw;
+  left: 0.7vw;
   background: #7c7c88;
   border-radius: 5px;
   margin-top: 5px;

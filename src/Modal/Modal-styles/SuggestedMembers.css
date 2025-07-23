@@ -1,49 +1,96 @@
 .modal-container-sm {
-    width: 100%;
-    height: 27vw;
-    display: grid;
-    grid-template-rows: 10% 10% 43% 37%;
-    transition: opacity 0.3s ease-in-out;
+  width: 100%;
+  height: 27vw;
+  display: grid;
+  grid-template-rows: 10% 10% 43% 37%;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .txt-sm {
-    direction: rtl;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    user-select: none;
+  justify-content: space-between;
 }
-.txt-sm p {
+.txt-sm,
+.users-for-adding .txt-sm2 #mems {
+  direction: rtl;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  user-select: none;
+  color: #fff;
+  font-size: 0.9vw;
+  font-family: "Peyda-Bold";
+}
+.txt-sm p,
+.users-for-adding .txt-sm2 #mems {
   display: flex;
   align-items: center;
   column-gap: 3px;
-  color: #FFF;
-  font-size: 0.9vw;
-  font-family: "Peyda-Bold";
-  letter-spacing: 1vw;
 }
-.txt-sm p .user-logo-icon ,.acc-add-icon {
+.txt-sm p .user-logo-icon,
+.acc-add-icon {
   width: 1.5vw;
 }
+.user-logo-icon {
+  width: 1.6vw;
+}
+.sm-list,
+.sm-list2 {
+  width: 100%;
+  direction: rtl;
+  overflow-y: auto;
+}
+.sm-list::-webkit-scrollbar,
+.sm-list2::-webkit-scrollbar {
+  background: transparent;
+}
+.sm-list::-webkit-scrollbar-thumb,
+.sm-list2::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 6px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+.sm-list::-webkit-scrollbar-button,
+.sm-list2::-webkit-scrollbar-button {
+  display: none;
+}
 
-.sm-list {
-    width: 100%;
-    height: auto;
-    overflow-y: auto;
-    direction: rtl;
+.sm-list2 {
+  height: 8vw;
 }
-.users-for-adding {
-    width: 100%;
-    display: grid;
-    grid-template-rows: 25% 75%;
-    align-items: end;
-}
-.users-for-adding p {
+
+.ml-scroll2 {
   display: flex;
+  flex-direction: column;
+  row-gap: 0.7vw;
+}
+
+.users-for-adding {
+  width: 100%;
+  display: grid;
+  grid-template-rows: 25% 75%;
   align-items: center;
-  column-gap: 3px;
-  color: #FFF;
-  font-size: 0.9vw;
-  font-family: "Peyda-Bold";
+  direction: rtl;
+}
+
+.add-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-user-img {
+  background: #d9d9d986;
+  width: 4.6vw;
+  height: 3vw;
+  border-radius: 5px;
+  padding: 0.8vw;
+  user-select: none;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.added {
+  background: #2a26705c;
+  transition: all 0.3s ease-in-out;
 }
