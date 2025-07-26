@@ -7,21 +7,18 @@ import { useState, useEffect } from 'react';
 import '../Modal/Modal-styles/AddNewSec.css';
 import RippleEffect from '../Effect/RippleEffect';
 
-const importMembers = require.context('../images/members', false, /\.svg$/);
-const members = importMembers
-  .keys()
-  .sort()
-  .map(importMembers);
-
-export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
+export default function AddNewSec({ onClose, onOpenSuggestedMembers, onAddSection, selectedUsers }) {
   const [visible, setVisible] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
   const [showLayer, setShowLayer] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
   const [value, setValue] = useState('برنامه نویسی وب');
   const [text, setText] = useState('توضیحات: ');
+  const [title, setTitle] = useState('');
+
 
   const options = ['برنامه نویسی وب', 'برنامه نویسی بک اند', 'طراحی گرافیک', 'بازی سازی', 'هک و امنیت'];
+  const members = selectedUsers;
   const marginLeft = members.length >= 8 ? '5px' : '15px';
 
   const handleChange = (e) => {
@@ -43,6 +40,25 @@ export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
     setVisible(false);
     setTimeout(onClose, 300);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!title || !imagePreview) {
+      alert('نام بخش و تصویر الزامی است.');
+      return;
+    }
+
+    const newSection = {
+      nameFa: title,
+      nameEn: text.replace('توضیحات: ', ''),
+      logo: imagePreview,
+      className: 'custom-section',
+      logoStyle: {}
+    };
+
+    onAddSection(newSection);
+  };
+
 
   useEffect(() => setVisible(true), []);
 
@@ -69,7 +85,7 @@ export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
         <div className="inputs">
           <form>
             <div className="first-input">
-              <input type="text" placeholder="نام بخش جدید را وارد کنید" spellCheck={false} />
+              <input type="text" placeholder="نام بخش جدید را وارد کنید" spellCheck={false} value={title} onChange={(e) => setTitle(e.target.value)}/>
             </div>
 
             <div className="rest-of-form">
@@ -125,8 +141,8 @@ export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
                   <div className={`members-preview ${members.length >= 8 ? 'tight-margin' : ''}`} style={{ paddingRight: marginLeft }} dir='rtl'>
                     <div className="p-container"><p>اعضای پیش فرض</p></div>
                     <div className="members-images">
-                      {members.slice(0, 8).map((src, i) => (
-                        <img key={i} src={src} alt={`member-${i}`} className="member-img" style={{ left: `${i * 13}px`, zIndex: i }} />
+                      {members.slice(0, 8).map((member, i) => (
+                        <img key={i} src={member.img} alt={`member-${i}`} className="member-img" style={{ left: `${i * 13}px`, zIndex: i }} />
                       ))}
                       {members.length > 8 && (
                         <div className="more-members" style={{ left: `${8 * 13}px`, zIndex: 8 }}>+{members.length - 8}</div>
@@ -142,7 +158,7 @@ export default function AddNewSec({ onClose, onOpenSuggestedMembers }) {
             </div>
 
             <div className="submit-btn">
-              <RippleEffect className="add-new-sec">افزودن بخش جدید<img className="add2" src={add} alt="add a new section" /></RippleEffect>
+              <RippleEffect className="add-new-sec" onClick={handleSubmit}>افزودن بخش جدید<img className="add2" src={add} alt="add a new section" /></RippleEffect>
             </div>
           </form>
         </div>

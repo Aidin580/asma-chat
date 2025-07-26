@@ -13,7 +13,28 @@ import added from '../images/added.svg';
 import './Modal-styles/SuggestedMembers.css';
 import RippleEffect from '../Effect/RippleEffect';
 
-export default function MemberSetting({ onClose }) {
+const suggestedUsers = [
+  { id: 1, name: 'علی نعیمی', username: 'naemiorg@', img: user1 },
+  { id: 2, name: 'عارف طالبی', username: 'areftg@', img: user2 },
+  { id: 3, name: 'محمد امین درون پرور', username: 'dxport@', img: user3 },
+];
+
+const otherUsers = [
+  { id: 4, name: 'صدرا شعبان نژاد', username: 'sh14@', img: user4 },
+  { id: 5, name: 'محمد امین صدیقی', username: 'aminsd@', img: user5 },
+];
+
+export default function MemberSetting({ onClose, selectedUsers, setSelectedUsers }) {
+  const allUsers = [...suggestedUsers, ...otherUsers];
+
+  const [checkedUsers, setCheckedUsers] = useState(
+    allUsers.filter(user => selectedUsers.some(sel => sel.id === user.id))
+  );
+
+  useEffect(() => {
+    setCheckedUsers(allUsers.filter(user => selectedUsers.some(sel => sel.id === user.id)));
+  }, [selectedUsers]);
+
   const [visible, setVisible] = useState(false);
   useEffect(() => setVisible(true), []);
 
@@ -21,42 +42,35 @@ export default function MemberSetting({ onClose }) {
     setVisible(false);
     setTimeout(onClose, 300);
   };
-  
-  const [addedUsers, setAddedUsers] = useState({});
 
-  const toggleAdd = (id) => {
-    setAddedUsers((prev) => ({ ...prev, [id]: !prev[id] }));
+  const isSelected = (id) => selectedUsers.some(user => user.id === id);
+  const toggleAdd = (user) => {
+    const exists = isSelected(user.id);
+    if (exists) {
+      setSelectedUsers(selectedUsers.filter(u => u.id !== user.id));
+    } else {
+      setSelectedUsers([...selectedUsers, user]);
+    }
   };
-  const suggestedUsers = [
-    { id: 1, name: 'علی نعیمی', username: 'naemiorg@', img: user1 },
-    { id: 2, name: 'عارف طالبی', username: 'areftg@', img: user2 },
-    { id: 3, name: 'محمد امین درون پرور', username: 'dxport@', img: user3 },
-  ];
 
-  const otherUsers = [
-    { id: 4, name: 'صدرا شعبان نژاد', username: 'sh14@', img: user4 },
-    { id: 5, name: 'محمد امین صدیقی', username: 'aminsd@', img: user5 },
-  ];
-
-  const renderUser = ({ id, name, username, img }) => (
-    <div key={id} className={`user${id} users`}>
+  const renderUser = (user) => (
+    <div key={user.id} className={`user${user.id} users`}>
       <div className="user-img-container">
-        <img className="user-img" src={img} alt={`${name}-user-img`} />
+        <img className="user-img" src={user.img} alt={`${user.name}-user-img`} />
       </div>
 
       <div className="user-information">
         <div className="user-name-id">
-          <p className="member-name">{name}</p>
-          <p className="member-username">{username}</p>
+          <p className="member-name">{user.name}</p>
+          <p className="member-username">{user.username}</p>
         </div>
-        <div className="user-skills"></div>
       </div>
 
       <div className="add-user">
-        <RippleEffect className="centerize2" onClick={() => toggleAdd(id)}>
+        <RippleEffect className="centerize2" onClick={() => toggleAdd(user)}>
           <img
-            className={`add-user-img ${addedUsers[id] ? 'added' : ''}`}
-            src={addedUsers[id] ? added : add_icon}
+            className={`add-user-img ${isSelected(user.id) ? 'added' : ''}`}
+            src={isSelected(user.id) ? added : add_icon}
             alt="user-add-button"
           />
         </RippleEffect>

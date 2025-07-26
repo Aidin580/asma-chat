@@ -11,9 +11,15 @@ import add from '../images/add.svg';
 import amin from '../images/amin.png';
 import ali from '../images/ali.png';
 import sadra from '../images/sadra.png';
+import user1 from '../images/users/user1.svg';
+import user2 from '../images/users/user2.svg';
+import user3 from '../images/users/user3.svg';
+import user4 from '../images/users/user4.svg';
+import user5 from '../images/users/user5.svg';
 
 import './Screen-styles/Home.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import RippleEffect from '../Effect/RippleEffect';
 
 import ModalWrapper from '../Components/ModalWrapper';
 import AddNewSec from '../Modal/AddNewSec';
@@ -24,8 +30,15 @@ import MemberSetting from '../Modal/MemberSetting';
 import Task from '../Modal/Task';
 import SuggestedMembers from '../Modal/SuggestedMembers';
 import ModalWrapper2 from '../Components/ModalWrapper2';
+import EditSections from '../Modal/EditSections';
 
 export default function Home() {
+
+  const [modalPage, setModalPage] = useState(null);
+  const [modalPage2, setModalPage2] = useState(null);
+  const [previousModalPage, setPreviousModalPage] = useState(null);
+
+
   useEffect(() => {
     const handleClick = function (e) {
       const ripple = document.createElement("span");
@@ -54,10 +67,6 @@ export default function Home() {
       buttons3.forEach(btn => btn.removeEventListener("click", handleClick));
     };
   }, []);
-
-  const [modalPage, setModalPage] = useState(null);
-  const [modalPage2, setModalPage2] = useState(null);
-
   function handleCloseModal() {
     setModalPage(null);
   }
@@ -74,8 +83,84 @@ export default function Home() {
     setModalPage('chatSetting');
   }
   function handleCloseSuggestedMembers() {
-    setModalPage('addNewSection');
+    if (previousModalPage) {
+      setModalPage(previousModalPage);
+      setPreviousModalPage(null);
+    } else {
+      setModalPage(null);
+    }
   }
+  function handleCloseEditSections() {
+    setModalPage('sections');
+  }
+
+  const [sections, setSections] = useState([
+    {
+      id: 1,
+      nameFa: 'بخش ویژه سامانه جامع',
+      nameEn: 'SJM VIP CHANNEL',
+      logo: sjm,
+      className: 'sjm-vip sections',
+      logoStyle: {},
+      category: 'برنامه نویسی وب',
+      members: [1, 2, 3, 4, 5 ,6],
+    },
+    {
+      id: 2,
+      nameFa: 'بخش ویژه سالن استار',
+      nameEn: 'SALON STAR CHANNEL',
+      logo: salon,
+      className: 'salon-star sections',
+      logoStyle: { width: '4vw' },
+      category: 'برنامه نویسی بک اند',
+      members: [3, 5 ,6],
+    },
+    {
+      id: 3,
+      nameFa: 'بخش ویژه انیمیشن',
+      nameEn: 'ANIMATION CHANNEL',
+      logo: animation,
+      className: 'animation sections',
+      logoStyle: { width: '3.3vw' },
+      category: 'طراحی گرافیکی',
+      members: [1, 3, 5],
+    },
+    {
+      id: 4,
+      nameFa: 'چت ویژه لیدرها',
+      nameEn: 'LEADERS CHAT',
+      logo: leaders,
+      className: 'leader-chat sections',
+      logoStyle: { width: '3.3vw' },
+      category: 'هک و امنیت',
+      members: [1, 2, 5 ,6],
+    },
+    {
+      id: 5,
+      nameFa: 'چت ویژه مدیران',
+      nameEn: 'CEO CHAT',
+      logo: ceo,
+      className: 'ceo-chat sections',
+      logoStyle: { width: '3.3vw' },
+      category: 'هک و امنیت',
+      members: [1, 2],
+    }
+  ]);
+
+  const [editingSection, setEditingSection] = useState(null);
+  const [selectedUsers, setSelectedUsers] = useState([
+    { id: 1, name: 'علی نعیمی', username: 'naemiorg@', img: user1 },
+    { id: 2, name: 'عارف طالبی', username: 'areftg@', img: user2 },
+    { id: 3, name: 'محمد امین درون پرور', username: 'dxport@', img: user3 },
+  ]);
+  const membersOfEditingSection = useMemo(() => {
+  if (!editingSection) return [];
+  return selectedUsers.filter(user =>
+    editingSection.members.includes(user.id)
+  );
+}, [editingSection, selectedUsers]);
+
+
 
   return (
     <div className="container2">
@@ -88,40 +173,16 @@ export default function Home() {
 
         <div className="pages">
           <div className="scroll">
-            <div className="sjm-vip">
-              <img src={sjm} alt="sjm vip logo" />
-              <h3>بخش ویژه سامانه جامع</h3>
-              <p>SJM VIP CHANNEL</p>
-              <button className="btn2">ورود به بخش<img src={enter} alt='enter logo' /></button>
-            </div>
 
-            <div className="salon-star">
-              <img src={salon} style={{ width: "4vw" }} alt="salon star logo" />
-              <h3>بخش ویژه سالن استار</h3>
-              <p>SALON STAR CHANNEL</p>
-              <button className="btn2">ورود به بخش<img src={enter} alt='enter logo' /></button>
-            </div>
+            {sections.map(section => (
+              <div key={section.id} className={section.className}>
+                <img className="section-img" src={section.logo} alt={`${section.nameEn} logo`} style={section.logoStyle} />
+                <h3 className="section-h3">{section.nameFa}</h3>
+                <p className="section-p">{section.nameEn}</p>
+                <RippleEffect className="enter-section">ورود به بخش<img className="enter-section-img" src={enter} alt='enter logo' /></RippleEffect>
+              </div>
+            ))}
 
-            <div className="animation">
-              <img src={animation} style={{ width: "3.3vw" }} alt="animation logo" />
-              <h3>بخش ویژه انیمیشن</h3>
-              <p>ANIMATION CHANNEL</p>
-              <button className="btn2">ورود به بخش<img src={enter} alt='enter logo' /></button>
-            </div>
-
-            <div className="leader-chat">
-              <img src={leaders} style={{ width: "3.3vw" }} alt="leaders chat logo" />
-              <h3>چت ویژه لیدرها</h3>
-              <p>LEADERS CHAT</p>
-              <button className="btn2">ورود به بخش<img src={enter} alt='enter logo' /></button>
-            </div>
-
-            <div className="ceo-chat">
-              <img src={ceo} style={{ width: "3.3vw" }} alt="ceo chat logo" />
-              <h3>چت ویژه مدیران</h3>
-              <p>CEO CHAT</p>
-              <button className="btn2">ورود به بخش<img src={enter} alt='enter logo' /></button>
-            </div>
           </div>
         </div>
 
@@ -189,17 +250,50 @@ export default function Home() {
           <ModalWrapper onClose={handleCloseModal}>
             {({ handleClose }) => {
               if (modalPage === 'addNewSection')
-                return <AddNewSec onClose={handleClose} onOpenSuggestedMembers={() => setModalPage('suggestedMembers')} />;
+              return <AddNewSec onClose={handleClose} onOpenSuggestedMembers={() => {setPreviousModalPage(modalPage);setModalPage('suggestedMembers')}} onAddSection={(newSection) => {
+                  setSections(prev => [...prev, { ...newSection, id: Date.now() }]);
+                  handleClose();
+              }}
+              selectedUsers={selectedUsers}
+              />;
               if (modalPage === 'chatSetting')
                 return <ChatSetting onClose={handleClose} onOpenSections={() => setModalPage('sections')} onOpenMemberSetting={() => setModalPage('memberSetting')} onOpenTask={() => setModalPage('task')} />;
               if (modalPage === 'sections')
-                return <Sections onClose={handleCloseSections} onOpenaddNewSec={() => setModalPage('addNewSection')} />;
+                return <Sections onClose={handleCloseSections} onOpenaddNewSec={() => setModalPage('addNewSection')} sections={sections} setSections={setSections} onOpenEditSection={(section) => {
+                  setEditingSection(section);
+                  setModalPage('editSections');
+                }}/>;
               if (modalPage === 'memberSetting')
                 return <MemberSetting onClose={handleCloseMemberSetting} />;
               if (modalPage === 'task')
                 return <Task onClose={handleCloseTask} />;
               if (modalPage === 'suggestedMembers')
-                return <SuggestedMembers onClose={handleCloseSuggestedMembers} />;
+                return <SuggestedMembers onClose={handleCloseSuggestedMembers} selectedUsers={membersOfEditingSection} setSelectedUsers={setSelectedUsers}/>;
+              if (modalPage === 'editSections') {
+                return (
+                  <EditSections
+                    section={editingSection}
+                    selectedUsers={selectedUsers}
+                    onClose={handleCloseEditSections}
+                    onOpenSuggestedMembers={() => {setPreviousModalPage(modalPage); setModalPage('suggestedMembers')}}
+                    onSaveEdit={(updatedSection) => {
+                      setSections(prevSections =>
+                        prevSections.map(sec =>
+                          sec.id === updatedSection.id ? updatedSection : sec
+                        )
+                      );
+                      handleCloseEditSections();
+                    }}
+                    onAddSection={(newSection) => {
+                      setSections(prev => [
+                        ...prev,
+                        { ...newSection, id: Date.now() }
+                      ]);
+                      handleCloseEditSections();
+                    }}
+                  />
+                );
+              }
             }}
           </ModalWrapper>
         )}

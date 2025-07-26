@@ -277,6 +277,7 @@
   align-items: center;
   justify-content: space-between;
   user-select: none;
+  padding-left: 0.5vw;
 }
 .members .members-preview .p-container {
   text-wrap: nowrap;
@@ -291,9 +292,9 @@
 }
 .more-members {
   position: absolute;
-  top: 0.2vw;
-  width: 27px;
-  height: 27px;
+  top: 0vw;
+  width: 1.622vw;
+  height: 1.622vw;
   border-radius: 50%;
   background-color: #fff;
   color: #000;

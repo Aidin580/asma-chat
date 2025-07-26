@@ -13,17 +13,17 @@
 }
 
 .modal-content {
-  background: #ffffff44;
-  backdrop-filter: blur(20px);
   padding: 1vw 2.8vw;
   border-radius: 20px;
   width: 40vw;
   height: 29vw;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 35.6px rgba(0, 0, 0, 0.5);
   display: grid;
   grid-template-rows: 10% 10% 80%;
   transition: opacity 0.3s ease-in-out ,transform 0.3s ease-in-out;
   transform: scale(0.7);
+  background: linear-gradient(0deg, rgba(217, 217, 217, 0.26), rgba(217, 217, 217, 0.26)), rgba(42, 38, 112, 0.15);
+  backdrop-filter: blur(47.3104px);
 }
 .show {
   opacity: 1;
