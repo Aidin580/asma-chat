@@ -25,7 +25,6 @@ const otherUsers = [
 ];
 
 export default function MemberSetting({ onClose, selectedUsers, setSelectedUsers }) {
-  const allUsers = [...suggestedUsers, ...otherUsers];
 
   const [visible, setVisible] = useState(false);
   useEffect(() => setVisible(true), []);
