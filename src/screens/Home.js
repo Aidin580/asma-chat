@@ -15,9 +15,12 @@ import user1 from '../images/users/user1.svg';
 import user2 from '../images/users/user2.svg';
 import user3 from '../images/users/user3.svg';
 
+
 import './Screen-styles/Home.css';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import RippleEffect from '../Effect/RippleEffect';
+import { useNavigate } from 'react-router-dom';
+
 
 import ModalWrapper from '../Components/ModalWrapper';
 import AddNewSec from '../Modal/AddNewSec';
@@ -245,6 +248,12 @@ export default function Home() {
     };
   }, []);
 
+  const navigate = useNavigate();
+  const handleEnterSection = (sectionId) => {
+    navigate(`/section/${sectionId}`);
+  };
+
+
   return (
     <div className="container2">
       <div className="content2">
@@ -266,7 +275,7 @@ export default function Home() {
                 />
                 <h3 className="section-h3">{section.nameFa}</h3>
                 <p className="section-p">{section.nameEn}</p>
-                <RippleEffect className="enter-section">
+                <RippleEffect className="enter-section" onClick={() => handleEnterSection(section.id)}>
                   ورود به بخش
                   <img className="enter-section-img" src={enter} alt="enter logo" />
                 </RippleEffect>
