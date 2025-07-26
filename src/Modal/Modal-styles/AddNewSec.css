@@ -5,131 +5,103 @@
   grid-template-rows: 10% 10% 80%;
   transition: opacity 0.3s ease-in-out;
 }
-.fade-in {
-  opacity: 1;
-}
-.fade-out {
-  opacity: 0;
-}
-
+.fade-in { opacity: 1; }
+.fade-out { opacity: 0; }
 
 .close-container {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    margin-right: -30px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-right: -30px;
 }
-.close-container .close-icon {
-  background-color: transparent;
+.close-icon {
+  background: none;
   border: 0;
-  outline: 0;
   cursor: pointer;
   user-select: none;
 }
+
 .txt {
-    direction: rtl;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-    user-select: none;
+  direction: rtl;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  user-select: none;
 }
 
 .inputs form {
   display: grid;
   grid-template-rows: 25% 58% 17%;
 }
-.inputs form .first-input {
+.first-input {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.inputs form .first-input input {
+.first-input input {
   width: 100%;
   height: 75%;
+  padding: 0 20px;
+  font-size: 1vw;
   border: none;
   outline: none;
   direction: rtl;
-  font-size: 1vw;
-  padding: 0 20px;
   border-radius: 5px;
   background: #d9d9d946;
-  color: #FFF;
+  color: #fff;
   font-family: "Peyda-Bold";
 }
-.inputs form .first-input input::placeholder {
+.first-input input::placeholder {
   color: #ffffffa2;
   user-select: none;
 }
+
 .rest-of-form {
   display: grid;
   grid-template-columns: 35% 64%;
   column-gap: 0.3vw;
 }
-.img-picker {
-  height: 100%;
-}
-.rest-of-form2 {
-  height: 100%;
-  display: grid;
-  grid-template-rows: 30% 30% 40%;
-}
 
-.img-picker {
+.img-picker,
+.the-picker {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   user-select: none;
 }
 .the-picker {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  height: 100%;
-  background-color: #d9d9d946;
+  background: #d9d9d946;
   border-radius: 5px;
   position: relative;
 }
 .the-picker p {
-  font-family: "Peyda-Bold";
   font-size: 0.7vw;
   margin-bottom: 5px;
   color: #d9d9d975;
+  font-family: "Peyda-Bold";
 }
 .picker-text {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-.picker-text.hide {
-  opacity: 0;
-}
-.the-picker .pin-img {
-  width: 1.8vw;
-  background: #d9d9d991;
-  padding: 8px;
-  border-radius: 5px;
-}
+.picker-text.hide { opacity: 0; }
+
 .preview-keeper {
-  width: 100%;
-  height: 100%;
-  background: #d9d9d946;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-radius: 5px;
+  inset: 0;
+  background: #d9d9d946;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-.preview-keeper.show {
-  opacity: 1;
-}
+.preview-keeper.show { opacity: 1; }
+
 .img-preview {
   width: 100%;
   max-height: 100%;
@@ -142,56 +114,57 @@
   transform: scale(1);
 }
 
+.rest-of-form2 {
+  display: grid;
+  grid-template-rows: 30% 30% 40%;
+  height: 100%;
+}
+
 .dropdown-container {
-  width: 100% !important;
-  position: relative;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 0 0 10px 10px;
   column-gap: 0.7vw;
-  
+  position: relative;
 }
 #dropdown-btn {
   width: 100%;
   height: 100%;
   padding: 8px;
   border-radius: 5px;
-  font-family: "Peyda-Bold";
-  direction: rtl;
   font-size: 1vw;
   border: none;
-  outline: none;
-  background-color: #d9d9d946;
+  background: #d9d9d946;
   color: #fff;
+  direction: rtl;
+  font-family: "Peyda-Bold";
   cursor: pointer;
+  border: none;
+  outline: none;
 }
 .option-keeper {
+  width: 20%;
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
 }
 .dropdown-cont {
+  width: 100%;
+  height: 100%;
   border-radius: 6px;
-  background-color: #d9d9d946;
-  width: 3.5vw;
-  height: 3.2vw;
+  background: #d9d9d946;
   display: flex;
   justify-content: center;
   align-items: center;
-  user-select: none;
 }
-.option-keeper .dropdown {
-  transition: transform 0.3s ease;
-  background-color: transparent;
+.dropdown {
   width: 2.2vw;
+  transition: transform 0.3s ease;
 }
-.dropdown.rotate {
-  transform: rotate(180deg);
-}
-/* Dropdown list */
+.dropdown.rotate { transform: rotate(180deg); }
+
 .dropdown-options {
   position: absolute;
   top: 90%;
@@ -203,29 +176,16 @@
   z-index: 1000;
   list-style: none;
   padding: 5px 0;
+  direction: rtl;
   opacity: 0;
   transform: translateY(-5px);
   visibility: hidden;
   pointer-events: none;
-  direction: rtl;
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
   color: #fff;
   font-family: "Peyda-Bold";
   max-height: 7vw;
   overflow: auto;
-  scroll-behavior: smooth;
-}
-.dropdown-options::-webkit-scrollbar {
-  background: transparent;
-}
-.dropdown-options::-webkit-scrollbar-thumb {
-  background-color: white;
-  border-radius: 6px;
-  border: 3px solid transparent;
-  background-clip: content-box;
-}
-.dropdown-options::-webkit-scrollbar-button {
-  display: none;
 }
 .dropdown-options.show {
   opacity: 1;
@@ -239,71 +199,63 @@
   transition: background 0.2s ease;
 }
 .dropdown-options li:hover {
-  background-color: #eee;
+  background: #eee;
   color: #000;
+}
+.dropdown-options::-webkit-scrollbar {
+  background: transparent;
+}
+.dropdown-options::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 6px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+.dropdown-options::-webkit-scrollbar-button {
+  display: none;
 }
 
 .members {
-  width: 100%;
-  padding: 0 0 10px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 0 10px 10px;
 }
-.members .add-new-user {
+.add-new-user {
   width: 30%;
   height: 85%;
   border: 0;
-  outline: 0;
-  background-color: #d9d9d946;
+  background: #d9d9d946;
   border-radius: 5px;
+  font-size: 0.8vw;
   color: #fff;
   font-family: "Peyda-Bold";
-  font-size: 0.8vw;
   cursor: pointer;
-  overflow: hidden;
+  user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  user-select: none;
 }
-.members .members-preview {
+.members-preview {
   width: 68%;
   height: 85%;
-  border-radius: 5px;
-  background-color: #d9d9d946;
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-  user-select: none;
+  align-items: center;
+  background: #d9d9d946;
+  border-radius: 5px;
   padding-left: 0.5vw;
 }
-.members .members-preview .p-container {
-  text-wrap: nowrap;
-  font-family: "Peyda-Bold";
+.p-container {
   font-size: 0.6vw;
   color: #d9d9d977;
+  white-space: nowrap;
+  font-family: "Peyda-Bold";
 }
 .members-images {
   position: relative;
   height: 32px;
   margin-left: 3px;
-}
-.more-members {
-  position: absolute;
-  top: 0vw;
-  width: 1.622vw;
-  height: 1.622vw;
-  border-radius: 50%;
-  background-color: #fff;
-  color: #000;
-  font-size: 0.6vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Peyda-Bold";
-  box-shadow: 0 0 2px rgba(0,0,0,0.2);
 }
 .member-img {
   position: absolute;
@@ -318,6 +270,21 @@
   transform: scale(1.1);
   z-index: 100;
 }
+.more-members {
+  position: absolute;
+  top: 0;
+  width: 1.622vw;
+  height: 1.622vw;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  font-size: 0.6vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Peyda-Bold";
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
 
 .description {
   width: 100%;
@@ -326,56 +293,36 @@
 .description textarea {
   width: 100%;
   height: 100%;
-  resize: none;
-  border: 0;
-  outline: 0;
+  border: none;
+  outline: none;
   border-radius: 5px;
   background: #d9d9d946;
   direction: rtl;
   padding: 5px;
   color: #fff;
   font-family: "Peyda-Medium";
+  resize: none;
 }
 
 .submit-btn {
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.submit-btn .btn5 {
-  border: none;
-  outline: none;
-  background: #d9d9d946;
-  border-radius: 5px;
-  padding: 0.35vw 1.5vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  column-gap: 0.3vw;
-  color: #fff;
-  font-family: "Peyda-Bold";
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 6px 7px 40px -4px rgba(0, 0, 0, 0.2);
-  user-select: none;
-}
-.submit-btn .btn5 .add2 {
-  width: 1.2vw;
 }
 .add-new-sec {
   background: #d9d9d946;
   border: none;
-  outline: none;
   color: #fff;
   font-family: "Peyda-Medium";
   display: flex;
   align-items: center;
-  column-gap: 0.3vw;
   font-size: 0.9vw;
   padding: 0.4vw 1.3vw;
   border-radius: 5px;
   user-select: none;
+  column-gap: 0.3vw;
+}
+.add-new-sec .add2 {
+  width: 1.2vw;
 }

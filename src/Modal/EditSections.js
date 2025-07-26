@@ -12,19 +12,8 @@ export default function EditSections({
   onClose,
   onSaveEdit,
   selectedUsers,
-  setSelectedUsers,
   onOpenSuggestedMembers,
 }) {
-
-    function handleSaveMembers(newMembers) {
-        const newMemberIds = newMembers.map(m => m.id);
-        const updatedSection = {
-            ...section,
-            members: newMemberIds,
-        };
-        onSaveEdit(updatedSection);
-    }
-
 
     const [visible, setVisible] = useState(false);
     const [imagePreview, setImagePreview] = useState(null);
@@ -34,10 +23,8 @@ export default function EditSections({
     const [title, setTitle] = useState('');
     const membersInSection = selectedUsers.filter(user => section.members?.includes(user.id)) || [];
 
-    // دسته بندی ها (لیست کشویی)
     const options = ['برنامه نویسی وب', 'برنامه نویسی بک اند', 'طراحی گرافیک', 'بازی سازی', 'هک و امنیت'];
 
-    // محاسبه فاصله برای members
     const marginLeft = selectedUsers.length >= 8 ? '5px' : '15px';
 
     useEffect(() => {
@@ -46,7 +33,6 @@ export default function EditSections({
             setTitle(section.nameFa || '');
             setText(`توضیحات: ${section.nameEn || ''}`);
 
-            // اگر لوگو رشته است (string)، مستقیماً ست کن؛ در غیر اینصورت null
             if (typeof section.logo === 'string') {
             setImagePreview(section.logo);
             } else {
@@ -145,7 +131,6 @@ export default function EditSections({
 
 
             <div className="rest-of-form2">
-              {/* بخش لیست کشویی */}
               <div className="dropdown-container">
                 <input
                   type="text"
@@ -172,7 +157,6 @@ export default function EditSections({
                 </label>
               </div>
 
-              {/* اعضا */}
               <div className="members">
                 <RippleEffect
                   onClick={() => {
@@ -209,7 +193,6 @@ export default function EditSections({
                 </div>
               </div>
 
-              {/* توضیحات */}
               <div className="description">
                 <textarea spellCheck="false" value={text} onChange={handleChange} />
               </div>

@@ -1,14 +1,14 @@
 @font-face {
     font-family: "Kinetika-Bold";
-    src: url("../../Fonts/Kinetika-Bold.ttf"), format("true type font");
+    src: url("../../Fonts/Kinetika-Bold.ttf") format("truetype");
 }
 @font-face {
     font-family: "Peyda-Bold";
-    src: url("../../Fonts/Peyda-Bold.ttf"), format("true type font");
+    src: url("../../Fonts/Peyda-Bold.ttf") format("truetype");
 }
 @font-face {
     font-family: "Peyda-Medium";
-    src: url("../../Fonts/Peyda-Medium.ttf"), format("true type font");
+    src: url("../../Fonts/Peyda-Medium.ttf") format("truetype");
 }
 
 

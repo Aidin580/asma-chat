@@ -8,15 +8,32 @@ import '../Modal/Modal-styles/ChatSetting.css';
 import RippleEffect from '../Effect/RippleEffect';
 
 export default function ChatSetting({ onClose, onOpenSections, onOpenMemberSetting, onOpenTask }) {
-
-  const handleClose = () => {
-    onClose();
-  };
+  const sections = [
+    {
+      title: 'بخش ها',
+      desc: 'مدیریت و ویرایش و سازماندهی بخش های چت',
+      icon: hamburger_list,
+      onClick: onOpenSections,
+    },
+    {
+      title: 'مدیریت اعضاء',
+      desc: 'ویرایش اطلاعات، افزودن، حذف و تنظیمات کلی مربوط به اعضاء',
+      icon: membeers,
+      onClick: onOpenMemberSetting,
+    },
+    {
+      title: 'تسک ها',
+      desc: 'تنظیم تمام گزینه های مربوط به تسک ها و مشاهده تسک های در جریان',
+      icon: star,
+      onClick: onOpenTask,
+      id: 'last',
+    },
+  ];
 
   return (
     <div className="modal-container-cs">
       <div className="close-container">
-        <button className="close-icon" onClick={handleClose}>
+        <button className="close-icon" onClick={onClose}>
           <img src={close} alt="close" />
         </button>
       </div>
@@ -27,41 +44,19 @@ export default function ChatSetting({ onClose, onOpenSections, onOpenMemberSetti
       </div>
 
       <div className="settings">
-        <div className="sections">
-          <RippleEffect className="label-effect" onClick={() => {onOpenSections()}}>
-            <div className="texts-keeper">
-              <h5>بخش ها</h5>
-              <p>مدیریت و ویرایش و سازماندهی بخش های چت</p>
-            </div>
-            <div className="icon-keeper">
-              <img src={hamburger_list} alt="hamburger-icon" />
-            </div>
-          </RippleEffect>
-        </div>
-
-        <div className="members-settings">
-          <RippleEffect className="label-effect" onClick={() => {onOpenMemberSetting()}}>
-            <div className="texts-keeper">
-              <h5>مدیریت اعضاء</h5>
-              <p>ویرایش اطلاعات، افزودن، حذف و تنظیمات کلی مربوط به اعضاء</p>
-            </div>
-            <div className="icon-keeper">
-              <img src={membeers} alt="members-icon" />
-            </div>
-          </RippleEffect>
-        </div>
-
-        <div className="tasks">
-          <RippleEffect className="label-effect" id="last" onClick={() => {onOpenTask()}}>
-            <div className="texts-keeper">
-              <h5>تسک ها</h5>
-              <p>تنظیم تمام گزینه های مربوط به تسک ها و مشاهده تسک های در جریان</p>
-            </div>
-            <div className="icon-keeper">
-              <img src={star} alt="star-icon" />
-            </div>
-          </RippleEffect>
-        </div>
+        {sections.map(({ title, desc, icon, onClick, id }, i) => (
+          <div key={i} className={title === 'بخش ها' ? 'sections' : title === 'مدیریت اعضاء' ? 'members-settings' : 'tasks'}>
+            <RippleEffect className="label-effect" {...(id ? { id } : {})} onClick={onClick}>
+              <div className="texts-keeper">
+                <h5>{title}</h5>
+                <p>{desc}</p>
+              </div>
+              <div className="icon-keeper">
+                <img src={icon} alt={`${title}-icon`} />
+              </div>
+            </RippleEffect>
+          </div>
+        ))}
       </div>
     </div>
   );

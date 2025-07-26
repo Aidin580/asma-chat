@@ -27,14 +27,6 @@ const otherUsers = [
 export default function MemberSetting({ onClose, selectedUsers, setSelectedUsers }) {
   const allUsers = [...suggestedUsers, ...otherUsers];
 
-  const [checkedUsers, setCheckedUsers] = useState(
-    allUsers.filter(user => selectedUsers.some(sel => sel.id === user.id))
-  );
-
-  useEffect(() => {
-    setCheckedUsers(allUsers.filter(user => selectedUsers.some(sel => sel.id === user.id)));
-  }, [selectedUsers]);
-
   const [visible, setVisible] = useState(false);
   useEffect(() => setVisible(true), []);
 
@@ -44,9 +36,9 @@ export default function MemberSetting({ onClose, selectedUsers, setSelectedUsers
   };
 
   const isSelected = (id) => selectedUsers.some(user => user.id === id);
+
   const toggleAdd = (user) => {
-    const exists = isSelected(user.id);
-    if (exists) {
+    if (isSelected(user.id)) {
       setSelectedUsers(selectedUsers.filter(u => u.id !== user.id));
     } else {
       setSelectedUsers([...selectedUsers, user]);
@@ -71,7 +63,7 @@ export default function MemberSetting({ onClose, selectedUsers, setSelectedUsers
           <img
             className={`add-user-img ${isSelected(user.id) ? 'added' : ''}`}
             src={isSelected(user.id) ? added : add_icon}
-            alt="user-add-button"
+            alt={isSelected(user.id) ? "user-added" : "user-add-button"}
           />
         </RippleEffect>
       </div>

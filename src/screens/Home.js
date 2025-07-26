@@ -14,11 +14,9 @@ import sadra from '../images/sadra.png';
 import user1 from '../images/users/user1.svg';
 import user2 from '../images/users/user2.svg';
 import user3 from '../images/users/user3.svg';
-import user4 from '../images/users/user4.svg';
-import user5 from '../images/users/user5.svg';
 
 import './Screen-styles/Home.css';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import RippleEffect from '../Effect/RippleEffect';
 
 import ModalWrapper from '../Components/ModalWrapper';
@@ -33,67 +31,9 @@ import ModalWrapper2 from '../Components/ModalWrapper2';
 import EditSections from '../Modal/EditSections';
 
 export default function Home() {
-
   const [modalPage, setModalPage] = useState(null);
   const [modalPage2, setModalPage2] = useState(null);
   const [previousModalPage, setPreviousModalPage] = useState(null);
-
-
-  useEffect(() => {
-    const handleClick = function (e) {
-      const ripple = document.createElement("span");
-      ripple.classList.add("ripple");
-      const rect = this.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      ripple.style.left = `${x}px`;
-      ripple.style.top = `${y}px`;
-
-      this.appendChild(ripple);
-
-      setTimeout(() => {
-        ripple.remove();
-      }, 600);
-    };
-
-    const buttons2 = document.querySelectorAll(".btn2");
-    buttons2.forEach(btn => btn.addEventListener("click", handleClick));
-    const buttons3 = document.querySelectorAll(".btn3");
-    buttons3.forEach(btn => btn.addEventListener("click", handleClick));
-
-    return () => {
-      buttons2.forEach(btn => btn.removeEventListener("click", handleClick));
-      buttons3.forEach(btn => btn.removeEventListener("click", handleClick));
-    };
-  }, []);
-  function handleCloseModal() {
-    setModalPage(null);
-  }
-  function handleCloseModal2() {
-    setModalPage2(null);
-  }
-  function handleCloseSections() {
-    setModalPage('chatSetting');
-  }
-  function handleCloseMemberSetting() {
-    setModalPage('chatSetting');
-  }
-  function handleCloseTask() {
-    setModalPage('chatSetting');
-  }
-  function handleCloseSuggestedMembers() {
-    if (previousModalPage) {
-      setModalPage(previousModalPage);
-      setPreviousModalPage(null);
-    } else {
-      setModalPage(null);
-    }
-  }
-  function handleCloseEditSections() {
-    setModalPage('sections');
-  }
-
   const [sections, setSections] = useState([
     {
       id: 1,
@@ -103,7 +43,7 @@ export default function Home() {
       className: 'sjm-vip sections',
       logoStyle: {},
       category: 'برنامه نویسی وب',
-      members: [1, 2, 3, 4, 5 ,6],
+      members: [1, 2, 3, 4, 5, 6],
     },
     {
       id: 2,
@@ -113,7 +53,7 @@ export default function Home() {
       className: 'salon-star sections',
       logoStyle: { width: '4vw' },
       category: 'برنامه نویسی بک اند',
-      members: [3, 5 ,6],
+      members: [3, 5, 6],
     },
     {
       id: 3,
@@ -133,7 +73,7 @@ export default function Home() {
       className: 'leader-chat sections',
       logoStyle: { width: '3.3vw' },
       category: 'هک و امنیت',
-      members: [1, 2, 5 ,6],
+      members: [1, 2, 5, 6],
     },
     {
       id: 5,
@@ -144,23 +84,166 @@ export default function Home() {
       logoStyle: { width: '3.3vw' },
       category: 'هک و امنیت',
       members: [1, 2],
-    }
+    },
   ]);
 
   const [editingSection, setEditingSection] = useState(null);
+
   const [selectedUsers, setSelectedUsers] = useState([
     { id: 1, name: 'علی نعیمی', username: 'naemiorg@', img: user1 },
     { id: 2, name: 'عارف طالبی', username: 'areftg@', img: user2 },
     { id: 3, name: 'محمد امین درون پرور', username: 'dxport@', img: user3 },
   ]);
+
   const membersOfEditingSection = useMemo(() => {
-  if (!editingSection) return [];
-  return selectedUsers.filter(user =>
-    editingSection.members.includes(user.id)
-  );
-}, [editingSection, selectedUsers]);
+    if (!editingSection) return [];
+    return selectedUsers.filter(user => editingSection.members.includes(user.id));
+  }, [editingSection, selectedUsers]);
 
+  // توابع ساده برای باز کردن مودال‌ها
+  const openChatSetting = useCallback(() => setModalPage('chatSetting'), []);
+  const openSections = useCallback(() => setModalPage('sections'), []);
+  const openAddNewSection = useCallback(() => setModalPage('addNewSection'), []);
+  const openPersonalSetting = useCallback(() => setModalPage2('personalSetting'), []);
+  const openMemberSetting = useCallback(() => setModalPage('memberSetting'), []);
+  const openTask = useCallback(() => setModalPage('task'), []);
 
+  // توابع بستن مودال
+  const handleCloseModal = () => setModalPage(null);
+  const handleCloseModal2 = () => setModalPage2(null);
+
+  // بستن مودال‌های میانی و باز کردن چت ستینگ
+  const handleCloseSections = () => setModalPage('chatSetting');
+  const handleCloseMemberSetting = () => setModalPage('chatSetting');
+  const handleCloseTask = () => setModalPage('chatSetting');
+
+  // بستن مودال SuggestedMembers و برگشت به مودال قبلی
+  const handleCloseSuggestedMembers = () => {
+    if (previousModalPage) {
+      setModalPage(previousModalPage);
+      setPreviousModalPage(null);
+    } else {
+      setModalPage(null);
+    }
+  };
+
+  const handleCloseEditSections = () => setModalPage('sections');
+
+  // کد رندر مودال ها در یک تابع مجزا
+  const renderModalContent = (handleClose) => {
+    switch (modalPage) {
+      case 'addNewSection':
+        return (
+          <AddNewSec
+            onClose={handleClose}
+            onOpenSuggestedMembers={() => {
+              setPreviousModalPage(modalPage);
+              setModalPage('suggestedMembers');
+            }}
+            onAddSection={(newSection) => {
+              setSections((prev) => [...prev, { ...newSection, id: Date.now() }]);
+              handleClose();
+            }}
+            selectedUsers={selectedUsers}
+          />
+        );
+
+      case 'chatSetting':
+        return (
+          <ChatSetting
+            onClose={handleClose}
+            onOpenSections={openSections}
+            onOpenMemberSetting={openMemberSetting}
+            onOpenTask={openTask}
+          />
+        );
+
+      case 'sections':
+        return (
+          <Sections
+            onClose={handleCloseSections}
+            onOpenaddNewSec={openAddNewSection}
+            sections={sections}
+            setSections={setSections}
+            onOpenEditSection={(section) => {
+              setEditingSection(section);
+              setModalPage('editSections');
+            }}
+          />
+        );
+
+      case 'memberSetting':
+        return <MemberSetting onClose={handleCloseMemberSetting} />;
+
+      case 'task':
+        return <Task onClose={handleCloseTask} />;
+
+      case 'suggestedMembers':
+        return (
+          <SuggestedMembers
+            onClose={handleCloseSuggestedMembers}
+            selectedUsers={membersOfEditingSection}
+            setSelectedUsers={setSelectedUsers}
+          />
+        );
+
+      case 'editSections':
+        return (
+          <EditSections
+            section={editingSection}
+            selectedUsers={selectedUsers}
+            onClose={handleCloseEditSections}
+            onOpenSuggestedMembers={() => {
+              setPreviousModalPage(modalPage);
+              setModalPage('suggestedMembers');
+            }}
+            onSaveEdit={(updatedSection) => {
+              setSections((prevSections) =>
+                prevSections.map((sec) => (sec.id === updatedSection.id ? updatedSection : sec))
+              );
+              handleCloseEditSections();
+            }}
+            onAddSection={(newSection) => {
+              setSections((prev) => [...prev, { ...newSection, id: Date.now() }]);
+              handleCloseEditSections();
+            }}
+          />
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  // افکت ریپل روی دکمه‌ها (در صورت تمایل می‌تونید این رو به RippleEffect منتقل کنید)
+  useEffect(() => {
+    const handleClick = function (e) {
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple');
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+
+      this.appendChild(ripple);
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    };
+
+    const buttons2 = document.querySelectorAll('.btn2');
+    const buttons3 = document.querySelectorAll('.btn3');
+    buttons2.forEach((btn) => btn.addEventListener('click', handleClick));
+    buttons3.forEach((btn) => btn.addEventListener('click', handleClick));
+
+    return () => {
+      buttons2.forEach((btn) => btn.removeEventListener('click', handleClick));
+      buttons3.forEach((btn) => btn.removeEventListener('click', handleClick));
+    };
+  }, []);
 
   return (
     <div className="container2">
@@ -173,30 +256,39 @@ export default function Home() {
 
         <div className="pages">
           <div className="scroll">
-
-            {sections.map(section => (
+            {sections.map((section) => (
               <div key={section.id} className={section.className}>
-                <img className="section-img" src={section.logo} alt={`${section.nameEn} logo`} style={section.logoStyle} />
+                <img
+                  className="section-img"
+                  src={section.logo}
+                  alt={`${section.nameEn} logo`}
+                  style={section.logoStyle}
+                />
                 <h3 className="section-h3">{section.nameFa}</h3>
                 <p className="section-p">{section.nameEn}</p>
-                <RippleEffect className="enter-section">ورود به بخش<img className="enter-section-img" src={enter} alt='enter logo' /></RippleEffect>
+                <RippleEffect className="enter-section">
+                  ورود به بخش
+                  <img className="enter-section-img" src={enter} alt="enter logo" />
+                </RippleEffect>
               </div>
             ))}
-
           </div>
         </div>
 
-        <div className="home-setting" style={{ userSelect: "none" }}>
-          <button className="btn3" onClick={() => setModalPage('chatSetting')}>
-            تنظیمات چت&nbsp;&nbsp;&nbsp;&nbsp;<img src={gear} style={{ width: "0.9vw" }} alt="chat setting" />
+        <div className="home-setting" style={{ userSelect: 'none' }}>
+          <button className="btn3" onClick={openChatSetting}>
+            تنظیمات چت&nbsp;&nbsp;&nbsp;&nbsp;
+            <img src={gear} style={{ width: '0.9vw' }} alt="chat setting" />
           </button>
 
-          <button className="btn3" onClick={() => setModalPage2('personalSetting')}>
-            تنظیمات شخصی&nbsp;&nbsp;&nbsp;<img src={accset} style={{ width: "1vw" }} alt="account setting" />
+          <button className="btn3" onClick={openPersonalSetting}>
+            تنظیمات شخصی&nbsp;&nbsp;&nbsp;
+            <img src={accset} style={{ width: '1vw' }} alt="account setting" />
           </button>
 
-          <button className="btn3" onClick={() => setModalPage('addNewSection')}>
-            ساخت بخش جدید&nbsp;&nbsp;&nbsp;<img src={add} style={{ width: "1vw" }} alt="add a new section" />
+          <button className="btn3" onClick={openAddNewSection}>
+            ساخت بخش جدید&nbsp;&nbsp;&nbsp;
+            <img src={add} style={{ width: '1vw' }} alt="add a new section" />
           </button>
         </div>
 
@@ -248,64 +340,15 @@ export default function Home() {
 
         {modalPage && (
           <ModalWrapper onClose={handleCloseModal}>
-            {({ handleClose }) => {
-              if (modalPage === 'addNewSection')
-              return <AddNewSec onClose={handleClose} onOpenSuggestedMembers={() => {setPreviousModalPage(modalPage);setModalPage('suggestedMembers')}} onAddSection={(newSection) => {
-                  setSections(prev => [...prev, { ...newSection, id: Date.now() }]);
-                  handleClose();
-              }}
-              selectedUsers={selectedUsers}
-              />;
-              if (modalPage === 'chatSetting')
-                return <ChatSetting onClose={handleClose} onOpenSections={() => setModalPage('sections')} onOpenMemberSetting={() => setModalPage('memberSetting')} onOpenTask={() => setModalPage('task')} />;
-              if (modalPage === 'sections')
-                return <Sections onClose={handleCloseSections} onOpenaddNewSec={() => setModalPage('addNewSection')} sections={sections} setSections={setSections} onOpenEditSection={(section) => {
-                  setEditingSection(section);
-                  setModalPage('editSections');
-                }}/>;
-              if (modalPage === 'memberSetting')
-                return <MemberSetting onClose={handleCloseMemberSetting} />;
-              if (modalPage === 'task')
-                return <Task onClose={handleCloseTask} />;
-              if (modalPage === 'suggestedMembers')
-                return <SuggestedMembers onClose={handleCloseSuggestedMembers} selectedUsers={membersOfEditingSection} setSelectedUsers={setSelectedUsers}/>;
-              if (modalPage === 'editSections') {
-                return (
-                  <EditSections
-                    section={editingSection}
-                    selectedUsers={selectedUsers}
-                    onClose={handleCloseEditSections}
-                    onOpenSuggestedMembers={() => {setPreviousModalPage(modalPage); setModalPage('suggestedMembers')}}
-                    onSaveEdit={(updatedSection) => {
-                      setSections(prevSections =>
-                        prevSections.map(sec =>
-                          sec.id === updatedSection.id ? updatedSection : sec
-                        )
-                      );
-                      handleCloseEditSections();
-                    }}
-                    onAddSection={(newSection) => {
-                      setSections(prev => [
-                        ...prev,
-                        { ...newSection, id: Date.now() }
-                      ]);
-                      handleCloseEditSections();
-                    }}
-                  />
-                );
-              }
-            }}
+            {({ handleClose }) => renderModalContent(handleClose)}
           </ModalWrapper>
         )}
 
-       {modalPage2 === 'personalSetting' && (
+        {modalPage2 === 'personalSetting' && (
           <ModalWrapper2 onClose={handleCloseModal2}>
-            {({ handleClose }) => (
-              <PersonalSetting onClose2={handleClose} />
-            )}
+            {({ handleClose }) => <PersonalSetting onClose2={handleClose} />}
           </ModalWrapper2>
         )}
-
       </div>
     </div>
   );
